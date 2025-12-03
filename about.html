@@ -16,12 +16,12 @@
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
       background: #fff;
       text-align: center;
       margin: -40px -20px 36px -20px;
       padding: 20px 20px 14px 20px;
       box-sizing: border-box;
+      z-index: 100;
     }
 
     .site-header-inner {
@@ -32,17 +32,15 @@
     .site-name {
       font-size: 20px;
       font-weight: normal;
-      text-decoration: none;
       color: #000;
-      display: inline-block;
+      text-decoration: none;
       cursor: pointer;
-      margin-bottom: 6px;
     }
 
     .main-nav {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease;
+      transition: opacity .25s ease;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -52,16 +50,19 @@
       white-space: nowrap;
     }
 
-    @media (min-width: 601px) {
-      .site-header:hover .main-nav {
-        opacity: 1;
-        pointer-events: auto;
-      }
-    }
-
     .site-header.menu-open .main-nav {
       opacity: 1;
       pointer-events: auto;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+    }
+
+    @media (min-width:601px) {
+      .site-header:hover .main-nav {
+        opacity:1;
+        pointer-events:auto;
+      }
     }
 
     .main-nav a {
@@ -72,46 +73,33 @@
       font-size: 16px;
     }
 
-    .main-nav a:hover {
-      text-decoration: underline;
-    }
-
     .page {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
-      padding-top: 20px;
+      max-width:800px;
+      margin:0 auto;
     }
 
     h1 {
-      font-weight: normal;
-      color: #999999;
-      margin-bottom: 14px;
+      font-weight:normal;
+      color:#999;
+      margin-bottom:16px;
     }
 
     .about-text {
-      max-width: 650px;
-      line-height: 1.6;
-      margin-bottom: 24px;
+      max-width:650px;
+      line-height:1.6;
+      margin-bottom:24px;
     }
 
     .about-image img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0;
+      width:100%;
+      display:block;
     }
 
-    @media (max-width: 600px) {
-      body {
-        margin: 28px 14px;
-      }
-      .site-header {
-        margin: -28px -14px 28px -14px;
-        padding: 16px 14px 10px 14px;
-      }
-      .page {
-        padding-top: 12px;
+    @media (max-width:600px){
+      body{margin:28px 14px;}
+      .site-header{
+        margin:-28px -14px 28px -14px;
+        padding:16px 14px 10px 14px;
       }
     }
   </style>
@@ -119,39 +107,38 @@
 
 <body>
 
-  <header class="site-header" id="siteHeader">
-    <div class="site-header-inner">
-      <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
-      <nav class="main-nav" id="mainNav">
-        <a href="FFI.html">ffi</a>
-        <a href="holdings.html">holdings</a>
-        <a href="letters.html">letters</a>
-        <a href="about.html">about</a>
-      </nav>
-    </div>
-  </header>
-
-  <div class="page">
-    <h1>field· smock</h1>
-
-    <p class="about-text">
-      A field smock is perfect when you're in the mud, which is often how it feels&nbsp;like&nbsp;investing.
-    </p>
-
-    <div class="about-image">
-      <img src="assets/mud.png" alt="In the mud">
-    </div>
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <a href="#" id="toggleMenu" class="site-name">fieldsmock</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="FFI.html">ffi</a>
+      <a href="holdings.html">holdings</a>
+      <a href="letters.html">letters</a>
+      <a href="about.html">about</a>
+    </nav>
   </div>
+</header>
 
-  <script>
-    const header = document.getElementById('siteHeader');
-    const toggle = document.getElementById('toggleMenu');
+<div class="page">
+  <h1>field· smock</h1>
 
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      header.classList.toggle('menu-open');
-    });
-  </script>
+  <p class="about-text">
+    A field smock is perfect when you're in the mud, which is often how it feels&nbsp;like&nbsp;investing.
+  </p>
+
+  <div class="about-image">
+    <img src="assets/mud.png">
+  </div>
+</div>
+
+<script>
+  const header=document.getElementById("siteHeader");
+  const toggle=document.getElementById("toggleMenu");
+  toggle.addEventListener("click",e=>{
+    e.preventDefault();
+    header.classList.toggle("menu-open");
+  });
+</script>
 
 </body>
 </html>

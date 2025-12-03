@@ -13,16 +13,16 @@
       color: #000;
     }
 
-    /* === HEADER === */
+    /* Sticky header with centred site name */
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
       background: #fff;
       text-align: center;
       margin: -40px -20px 36px -20px;
       padding: 20px 20px 14px 20px;
       box-sizing: border-box;
+      z-index: 100;
     }
 
     .site-header-inner {
@@ -35,11 +35,10 @@
       font-weight: normal;
       text-decoration: none;
       color: #000;
-      display: inline-block;
       cursor: pointer;
-      margin-bottom: 6px;
     }
 
+    /* Main nav — hidden until menu-open */
     .main-nav {
       opacity: 0;
       pointer-events: none;
@@ -47,12 +46,22 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin-top: 4px;
+      margin-top: 6px;
       display: flex;
       flex-direction: row;
-      white-space: nowrap;  /* keep items in a row */
+      white-space: nowrap;
     }
 
+    /* Visible when clicked or toggled */
+    .site-header.menu-open .main-nav {
+      opacity: 1;
+      pointer-events: auto;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+    }
+
+    /* Hover reveal on desktop */
     @media (min-width: 601px) {
       .site-header:hover .main-nav {
         opacity: 1;
@@ -60,73 +69,49 @@
       }
     }
 
-    .site-header.menu-open .main-nav {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
     .main-nav a {
       margin: 0 12px;
       text-decoration: none;
       color: #000;
-      text-transform: lowercase;
       font-size: 16px;
+      text-transform: lowercase;
     }
 
-    .main-nav a:hover {
-      text-decoration: underline;
-    }
+    .main-nav a:hover { text-decoration: underline; }
 
-    /* === PAGE === */
     .page {
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
-      padding-top: 20px;
     }
 
     h1 {
       font-weight: normal;
       color: #999999;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .tagline {
-      font-size: 18px;
-      margin-top: 0;
       margin-bottom: 20px;
-      line-height: 1.5;
-      color: #000;
-      max-width: 500px;
+      line-height: 1.6;
     }
 
     .overview {
       max-width: 600px;
-      margin: 30px 0;
-      line-height: 1.65;
-    }
-
-    .overview-title {
-      font-weight: normal;
-      margin-bottom: 6px;
+      margin: 20px 0 36px 0;
+      line-height: 1.7;
     }
 
     .chart {
       max-width: 800px;
-      margin: 40px 0;
-      text-align: center;
+      margin: 30px 0;
     }
 
     @media (max-width: 600px) {
-      body {
-        margin: 28px 14px;
-      }
+      body { margin: 28px 14px; }
       .site-header {
         margin: -28px -14px 28px -14px;
         padding: 16px 14px 10px 14px;
-      }
-      .page {
-        padding-top: 12px;
       }
     }
   </style>
@@ -134,56 +119,44 @@
 
 <body>
 
-  <header class="site-header" id="siteHeader">
-    <div class="site-header-inner">
-      <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
-      <nav class="main-nav" id="mainNav">
-        <a href="FFI.html">ffi</a>
-        <a href="holdings.html">holdings</a>
-        <a href="letters.html">letters</a>
-        <a href="about.html">about</a>
-      </nav>
-    </div>
-  </header>
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <a href="#" id="toggleMenu" class="site-name">fieldsmock</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="FFI.html">ffi</a>
+      <a href="holdings.html">holdings</a>
+      <a href="letters.html">letters</a>
+      <a href="about.html">about</a>
+    </nav>
+  </div>
+</header>
 
-  <div class="page">
+<div class="page">
+  <h1>Fieldsmock Fund I</h1>
 
-    <h1>Fieldsmock Fund I</h1>
+  <p class="tagline">An equity-concentrated portfolio, with an intrinsic-value focus.</p>
 
-    <p class="tagline">An equity-concentrated portfolio, with an intrinsic-value focus.</p>
-
-    <div class="overview">
-      <div class="overview-title">Fund Overview</div>
-      Inception: October 2023<br>
-      Mandate: Long-only equities<br>
-      Approach: Bottom-up valuation<br>
-      Benchmark: S&amp;P 500<br>
-      Reporting: Annual letters; returns shown on a time-weighted basis
-    </div>
-
-    <div class="chart">
-      <img src="assets/TWR.png" alt="Time-Weighted Return Chart" style="width:100%;">
-    </div>
-
-    <div class="chart">
-      <img src="assets/CR.png" alt="Cumulative Return Chart" style="width:100%;">
-    </div>
-
-    <div class="chart">
-      <img src="assets/CAR.png" alt="Compound Annual Return Chart" style="width:100%;">
-    </div>
-
+  <div class="overview">
+    Inception: October 2023<br>
+    Mandate: Long-only equities<br>
+    Approach: Bottom-up valuation<br>
+    Benchmark: S&P 500<br>
+    Reporting: Annual letters; returns shown on a time-weighted basis.
   </div>
 
-  <script>
-    const header = document.getElementById('siteHeader');
-    const toggle = document.getElementById('toggleMenu');
+  <div class="chart"><img src="assets/TWR.png" style="width:100%;"></div>
+  <div class="chart"><img src="assets/CR.png" style="width:100%;"></div>
+  <div class="chart"><img src="assets/CAR.png" style="width:100%;"></div>
+</div>
 
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      header.classList.toggle('menu-open');
-    });
-  </script>
+<script>
+  const header = document.getElementById("siteHeader");
+  const toggle = document.getElementById("toggleMenu");
+  toggle.addEventListener("click", e => {
+    e.preventDefault();
+    header.classList.toggle("menu-open");
+  });
+</script>
 
 </body>
 </html>

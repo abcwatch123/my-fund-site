@@ -34,8 +34,8 @@
       font-weight: normal;
       text-decoration: none;
       color: #000;
-      display: inline-block;
       cursor: pointer;
+      display: inline-block;
       margin-bottom: 6px;
     }
 
@@ -77,7 +77,7 @@
     }
 
     .page {
-      max-width: 800px;
+      max-width: 720px;
       margin: 0 auto;
       text-align: left;
       padding-top: 20px;
@@ -89,17 +89,16 @@
       margin-bottom: 16px;
     }
 
-    .letters-list p {
-      margin: 6px 0;
-      font-size: 18px;
+    p {
+      margin-bottom: 20px;
     }
 
-    .letters-list a {
-      text-decoration: none;
+    a {
       color: #000;
+      text-decoration: none;
     }
 
-    .letters-list a:hover {
+    a:hover {
       text-decoration: underline;
     }
 
@@ -120,35 +119,33 @@
 
 <body>
 
-  <header class="site-header" id="siteHeader">
-    <div class="site-header-inner">
-      <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
-      <nav class="main-nav" id="mainNav">
-        <a href="FFI.html">ffi</a>
-        <a href="holdings.html">holdings</a>
-        <a href="letters.html">letters</a>
-        <a href="about.html">about</a>
-      </nav>
-    </div>
-  </header>
-
-  <div class="page">
-    <h1>Slightly organised thoughts</h1>
-
-    <div class="letters-list">
-      <p><a href="letter-0.html">0</a></p>
-    </div>
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="FFI.html">ffi</a>
+      <a href="holdings.html">holdings</a>
+      <a href="letters.html">letters</a>
+      <a href="about.html">about</a>
+    </nav>
   </div>
+</header>
 
-  <script>
-    const header = document.getElementById('siteHeader');
-    const toggle = document.getElementById('toggleMenu');
+<div class="page">
+  <h1>Slightly organised thoughts</h1>
 
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      header.classList.toggle('menu-open');
-    });
-  </script>
+  <p><a href="letter-0.html">0</a></p>
+</div>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const toggle = document.getElementById('toggleMenu');
+
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    header.classList.toggle('menu-open');
+  });
+</script>
 
 </body>
 </html>

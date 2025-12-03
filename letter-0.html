@@ -47,6 +47,9 @@
       left: 50%;
       transform: translateX(-50%);
       margin-top: 4px;
+      display: flex;
+      flex-direction: row;
+      white-space: nowrap;
     }
 
     @media (min-width: 601px) {
@@ -130,7 +133,7 @@
 
     <p>I started investing on the side while I had a full time job. Things changed when I started making more money investing than at my job. I don't believe in side hustles. I believe that if you’re good at something and truly believe in it, you should make it your main hustle. Call it laziness or efficiency, but I'm obsessed with maximising reward for the least amount of effort.</p>
 
-    <p>Price / value</p>
+    <p>Price value</p>
 
     <p>The real skill in investing is in price value. Everyone around you might be saying something is worth a certain price. It's your job to think critically based on first principles to discern what its true value is.</p>
 
@@ -155,24 +158,10 @@
   <script>
     const header = document.getElementById('siteHeader');
     const toggle = document.getElementById('toggleMenu');
-    let lastScrollY = window.scrollY;
 
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
       header.classList.toggle('menu-open');
-    });
-
-    window.addEventListener('scroll', function() {
-      const currentY = window.scrollY;
-      const isMobile = window.matchMedia('(max-width: 600px)').matches;
-      if (!isMobile) return;
-
-      if (currentY < lastScrollY) {
-        header.classList.add('menu-open');
-      } else {
-        header.classList.remove('menu-open');
-      }
-      lastScrollY = currentY;
     });
   </script>
 

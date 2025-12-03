@@ -20,9 +20,14 @@
       z-index: 100;
       background: #fff;
       text-align: center;
-      margin: -40px -20px 36px -20px; /* extend full-width while keeping page margin */
+      margin: -40px -20px 36px -20px;
       padding: 20px 20px 14px 20px;
       box-sizing: border-box;
+    }
+
+    .site-header-inner {
+      position: relative;
+      display: inline-block;
     }
 
     .site-name {
@@ -43,15 +48,11 @@
       left: 50%;
       transform: translateX(-50%);
       margin-top: 4px;
+      display: flex;
+      flex-direction: row;
+      white-space: nowrap;  /* keep items in a row */
     }
 
-    /* relative anchor for absolute nav */
-    .site-header-inner {
-      position: relative;
-      display: inline-block;
-    }
-
-    /* show on hover (desktop) */
     @media (min-width: 601px) {
       .site-header:hover .main-nav {
         opacity: 1;
@@ -59,7 +60,6 @@
       }
     }
 
-    /* show when forced open (mobile + JS toggle) */
     .site-header.menu-open .main-nav {
       opacity: 1;
       pointer-events: auto;
@@ -178,28 +178,10 @@
   <script>
     const header = document.getElementById('siteHeader');
     const toggle = document.getElementById('toggleMenu');
-    let lastScrollY = window.scrollY;
 
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
       header.classList.toggle('menu-open');
-    });
-
-    window.addEventListener('scroll', function() {
-      const currentY = window.scrollY;
-      const isMobile = window.matchMedia('(max-width: 600px)').matches;
-
-      if (!isMobile) return;
-
-      if (currentY < lastScrollY) {
-        // scrolling up -> show menu
-        header.classList.add('menu-open');
-      } else {
-        // scrolling down -> hide menu
-        header.classList.remove('menu-open');
-      }
-
-      lastScrollY = currentY;
     });
   </script>
 

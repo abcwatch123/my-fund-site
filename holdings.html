@@ -47,6 +47,9 @@
       left: 50%;
       transform: translateX(-50%);
       margin-top: 4px;
+      display: flex;
+      flex-direction: row;
+      white-space: nowrap;
     }
 
     @media (min-width: 601px) {
@@ -142,24 +145,10 @@
   <script>
     const header = document.getElementById('siteHeader');
     const toggle = document.getElementById('toggleMenu');
-    let lastScrollY = window.scrollY;
 
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
       header.classList.toggle('menu-open');
-    });
-
-    window.addEventListener('scroll', function() {
-      const currentY = window.scrollY;
-      const isMobile = window.matchMedia('(max-width: 600px)').matches;
-      if (!isMobile) return;
-
-      if (currentY < lastScrollY) {
-        header.classList.add('menu-open');
-      } else {
-        header.classList.remove('menu-open');
-      }
-      lastScrollY = currentY;
     });
   </script>
 

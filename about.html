@@ -86,8 +86,9 @@
       margin-bottom: 14px;
     }
 
+    /* Widened text container */
     .about-text {
-      max-width: 520px;
+      max-width: 650px;
       line-height: 1.6;
       margin-bottom: 24px;
     }
@@ -153,6 +154,7 @@
     window.addEventListener('scroll', function() {
       const currentY = window.scrollY;
       const isMobile = window.matchMedia('(max-width: 600px)').matches;
+
       if (!isMobile) return;
 
       if (currentY < lastScrollY) {
@@ -160,6 +162,7 @@
       } else {
         header.classList.remove('menu-open');
       }
+
       lastScrollY = currentY;
     });
   </script>

@@ -52,16 +52,22 @@
       white-space: nowrap;
     }
 
+    /* when menu is open (mobile & desktop click), show with white background */
+    .site-header.menu-open .main-nav {
+      opacity: 1;
+      pointer-events: auto;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    }
+
+    /* also allow hover to reveal on larger screens */
     @media (min-width: 601px) {
       .site-header:hover .main-nav {
         opacity: 1;
         pointer-events: auto;
       }
-    }
-
-    .site-header.menu-open .main-nav {
-      opacity: 1;
-      pointer-events: auto;
     }
 
     .main-nav a {
@@ -77,28 +83,29 @@
     }
 
     .page {
-      max-width: 720px;
+      max-width: 800px;      /* align with other pages */
       margin: 0 auto;
       text-align: left;
-      padding-top: 20px;
+      padding-top: 20px;     /* same vertical offset as others */
     }
 
     h1 {
       font-weight: normal;
       color: #999999;
-      margin-bottom: 16px;
+      margin-bottom: 14px;   /* harmonised with About */
     }
 
-    p {
-      margin-bottom: 20px;
+    .letters-list p {
+      margin: 6px 0;
+      font-size: 18px;
     }
 
-    a {
-      color: #000;
+    .letters-list a {
       text-decoration: none;
+      color: #000;
     }
 
-    a:hover {
+    .letters-list a:hover {
       text-decoration: underline;
     }
 
@@ -134,7 +141,9 @@
 <div class="page">
   <h1>Slightly organised thoughts</h1>
 
-  <p><a href="letter-0.html">0</a></p>
+  <div class="letters-list">
+    <p><a href="letter-0.html">0</a></p>
+  </div>
 </div>
 
 <script>

@@ -30,7 +30,7 @@
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html">Fieldsmock</a>
     <a href="about.html">About</a>
   </nav>
 
@@ -43,12 +43,53 @@
 
   <div class="chart">
     <img src="assets/CR.png" alt="Cumulative Return (CR)">
-    <div class="chart-label">Cumulative Return (CR)</div>
+    <div class="cha
+git add index.html
+git commit -m "Change top navigation link to 'Fieldsmock'"
+git push origin main
+cat > index.html <<EOL
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>fieldsmock</title>
+  <style>
+    body { font-family: Baskerville, serif; margin: 40px; }
+    h1 { text-align: center; font-family: Baskerville, serif; font-weight: normal; }
+    nav { text-align: center; margin-bottom: 40px; font-family: Baskerville, serif; }
+    nav a { margin: 0 15px; text-decoration: none; color: #333; }
+    .chart {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: center;
+      font-family: Baskerville, serif;
+    }
+    .chart img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Fieldsmock</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <h1>Fieldsmock Fund I</h1>
+
+  <div class="chart">
+    <img src="assets/TWR.png" alt="Time-Weighted Return (TWR)">
+  </div>
+
+  <div class="chart">
+    <img src="assets/CR.png" alt="Cumulative Return (CR)">
   </div>
 
   <div class="chart">
     <img src="assets/CAR.png" alt="Compound Annual Return (CAR)">
-    <div class="chart-label">Compound Annual Return (CAR)</div>
   </div>
 
 </body>

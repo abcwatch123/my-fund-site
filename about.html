@@ -2,68 +2,122 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>fieldsmock</title>
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=5">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5">
-  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=5">
-  <link rel="apple-touch-icon" href="/favicon.png?v=5">
-
+  <title>About – fieldsmock</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     body {
       font-family: Baskerville, serif;
       margin: 40px 20px;
       color: #000;
     }
-    nav {
+
+    .site-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
+      padding-bottom: 14px;
     }
-    nav a {
-      margin: 0 15px;
+
+    .site-name {
+      font-size: 20px;
+      font-weight: normal;
+      text-decoration: none;
+      color: #000;
+      display: inline-block;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+
+    .main-nav {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .site-header:hover .main-nav {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .main-nav.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .main-nav a {
+      margin: 0 12px;
       text-decoration: none;
       color: #000;
       text-transform: lowercase;
+      font-size: 16px;
     }
-    .content {
-      max-width: 700px;
-      margin: 40px auto 0 auto;
-      line-height: 1.8;
+
+    .main-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
       text-align: left;
     }
-    .image-container {
-      text-align: center;
-      margin-top: 30px;
+
+    h1 {
+      font-weight: normal;
+      color: #999999;
+      margin-bottom: 14px;
     }
-    .image-container img {
+
+    .about-text {
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .about-image img {
       max-width: 100%;
       height: auto;
-    }
-    @media (max-width: 600px) {
-      body {
-        margin: 28px 14px;
-      }
+      display: block;
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="index.html">fieldsmock</a>
-    <a href="about.html">about</a>
-    <a href="holdings.html">holdings</a>
-    <a href="letters.html">letters</a>
-  </nav>
+  <header class="site-header">
+    <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
 
-  <div class="content">
-    <p>The field smock is perfect when you're in the mud, which is often how investing feels.</p>
+    <nav class="main-nav" id="mainNav">
+      <a href="FFI.html">ffi</a>
+      <a href="holdings.html">holdings</a>
+      <a href="letters.html">letters</a>
+      <a href="about.html">about</a>
+    </nav>
+  </header>
 
-    <div class="image-container">
-      <img src="assets/mud.png" alt="Mud">
+  <div class="page">
+    <h1>field· smock</h1>
+
+    <p class="about-text">
+      A field smock is perfect when you're in the mud, which is often how it feels like investing.
+    </p>
+
+    <div class="about-image">
+      <img src="assets/mud.png" alt="In the mud">
     </div>
   </div>
+
+  <script>
+    const menu = document.getElementById('mainNav');
+    const toggle = document.getElementById('toggleMenu');
+
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      menu.classList.toggle('visible');
+    });
+  </script>
 
 </body>
 </html>

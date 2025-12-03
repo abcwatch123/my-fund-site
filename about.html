@@ -14,9 +14,19 @@
     }
 
     .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
       text-align: center;
-      margin-bottom: 36px;
-      padding-bottom: 14px;
+      margin: -40px -20px 36px -20px;
+      padding: 20px 20px 14px 20px;
+      box-sizing: border-box;
+    }
+
+    .site-header-inner {
+      position: relative;
+      display: inline-block;
     }
 
     .site-name {
@@ -32,15 +42,21 @@
     .main-nav {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 4px;
     }
 
-    .site-header:hover .main-nav {
-      opacity: 1;
-      pointer-events: auto;
+    @media (min-width: 601px) {
+      .site-header:hover .main-nav {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
 
-    .main-nav.visible {
+    .site-header.menu-open .main-nav {
       opacity: 1;
       pointer-events: auto;
     }
@@ -61,6 +77,7 @@
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
+      padding-top: 20px;
     }
 
     h1 {
@@ -81,20 +98,34 @@
       display: block;
       margin: 0;
     }
+
+    @media (max-width: 600px) {
+      body {
+        margin: 28px 14px;
+      }
+      .site-header {
+        margin: -28px -14px 28px -14px;
+        padding: 16px 14px 10px 14px;
+      }
+      .page {
+        padding-top: 12px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <header class="site-header">
-    <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
-
-    <nav class="main-nav" id="mainNav">
-      <a href="FFI.html">ffi</a>
-      <a href="holdings.html">holdings</a>
-      <a href="letters.html">letters</a>
-      <a href="about.html">about</a>
-    </nav>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header-inner">
+      <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="FFI.html">ffi</a>
+        <a href="holdings.html">holdings</a>
+        <a href="letters.html">letters</a>
+        <a href="about.html">about</a>
+      </nav>
+    </div>
   </header>
 
   <div class="page">
@@ -110,12 +141,26 @@
   </div>
 
   <script>
-    const menu = document.getElementById('mainNav');
+    const header = document.getElementById('siteHeader');
     const toggle = document.getElementById('toggleMenu');
+    let lastScrollY = window.scrollY;
 
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
-      menu.classList.toggle('visible');
+      header.classList.toggle('menu-open');
+    });
+
+    window.addEventListener('scroll', function() {
+      const currentY = window.scrollY;
+      const isMobile = window.matchMedia('(max-width: 600px)').matches;
+      if (!isMobile) return;
+
+      if (currentY < lastScrollY) {
+        header.classList.add('menu-open');
+      } else {
+        header.classList.remove('menu-open');
+      }
+      lastScrollY = currentY;
     });
   </script>
 

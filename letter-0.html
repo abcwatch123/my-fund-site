@@ -14,9 +14,19 @@
     }
 
     .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
       text-align: center;
-      margin-bottom: 36px;
-      padding-bottom: 14px;
+      margin: -40px -20px 36px -20px;
+      padding: 20px 20px 14px 20px;
+      box-sizing: border-box;
+    }
+
+    .site-header-inner {
+      position: relative;
+      display: inline-block;
     }
 
     .site-name {
@@ -32,15 +42,21 @@
     .main-nav {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 4px;
     }
 
-    .site-header:hover .main-nav {
-      opacity: 1;
-      pointer-events: auto;
+    @media (min-width: 601px) {
+      .site-header:hover .main-nav {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
 
-    .main-nav.visible {
+    .site-header.menu-open .main-nav {
       opacity: 1;
       pointer-events: auto;
     }
@@ -62,6 +78,7 @@
       margin: 0 auto;
       text-align: left;
       line-height: 1.7;
+      padding-top: 20px;
     }
 
     h1 {
@@ -78,8 +95,12 @@
       body {
         margin: 28px 14px;
       }
+      .site-header {
+        margin: -28px -14px 28px -14px;
+        padding: 16px 14px 10px 14px;
+      }
       .page {
-        max-width: 100%;
+        padding-top: 12px;
       }
     }
   </style>
@@ -87,15 +108,16 @@
 
 <body>
 
-  <header class="site-header">
-    <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
-
-    <nav class="main-nav" id="mainNav">
-      <a href="FFI.html">ffi</a>
-      <a href="holdings.html">holdings</a>
-      <a href="letters.html">letters</a>
-      <a href="about.html">about</a>
-    </nav>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header-inner">
+      <a href="#" class="site-name" id="toggleMenu">fieldsmock</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="FFI.html">ffi</a>
+        <a href="holdings.html">holdings</a>
+        <a href="letters.html">letters</a>
+        <a href="about.html">about</a>
+      </nav>
+    </div>
   </header>
 
   <div class="page">
@@ -108,7 +130,7 @@
 
     <p>I started investing on the side while I had a full time job. Things changed when I started making more money investing than at my job. I don't believe in side hustles. I believe that if you’re good at something and truly believe in it, you should make it your main hustle. Call it laziness or efficiency, but I'm obsessed with maximising reward for the least amount of effort.</p>
 
-    <p>Price value</p>
+    <p>Price / value</p>
 
     <p>The real skill in investing is in price value. Everyone around you might be saying something is worth a certain price. It's your job to think critically based on first principles to discern what its true value is.</p>
 
@@ -131,12 +153,26 @@
   </div>
 
   <script>
-    const menu = document.getElementById('mainNav');
+    const header = document.getElementById('siteHeader');
     const toggle = document.getElementById('toggleMenu');
+    let lastScrollY = window.scrollY;
 
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
-      menu.classList.toggle('visible');
+      header.classList.toggle('menu-open');
+    });
+
+    window.addEventListener('scroll', function() {
+      const currentY = window.scrollY;
+      const isMobile = window.matchMedia('(max-width: 600px)').matches;
+      if (!isMobile) return;
+
+      if (currentY < lastScrollY) {
+        header.classList.add('menu-open');
+      } else {
+        header.classList.remove('menu-open');
+      }
+      lastScrollY = currentY;
     });
   </script>
 

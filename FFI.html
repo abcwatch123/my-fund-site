@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Letters – fieldsmock</title>
+  <title>FFI – fieldsmock</title>
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,6 +13,7 @@
       color: #000;
     }
 
+    /* === HEADER === */
     .site-header {
       text-align: center;
       margin-bottom: 36px;
@@ -57,6 +58,7 @@
       text-decoration: underline;
     }
 
+    /* === PAGE === */
     .page {
       max-width: 800px;
       margin: 0 auto;
@@ -66,21 +68,33 @@
     h1 {
       font-weight: normal;
       color: #999999;
-      margin-bottom: 16px;
+      margin-bottom: 4px;
     }
 
-    .letters-list p {
-      margin: 6px 0;
+    .tagline {
       font-size: 18px;
-    }
-
-    .letters-list a {
-      text-decoration: none;
+      margin-top: 0;
+      margin-bottom: 20px;
+      line-height: 1.5;
       color: #000;
+      max-width: 500px;
     }
 
-    .letters-list a:hover {
-      text-decoration: underline;
+    .overview {
+      max-width: 600px;
+      margin: 30px 0;
+      line-height: 1.65;
+    }
+
+    .overview-title {
+      font-weight: normal;
+      margin-bottom: 6px;
+    }
+
+    .chart {
+      max-width: 800px;
+      margin: 40px 0;
+      text-align: center;
     }
   </style>
 </head>
@@ -99,11 +113,32 @@
   </header>
 
   <div class="page">
-    <h1>Some thoughts</h1>
 
-    <div class="letters-list">
-      <p><a href="letter-0.html">0</a></p>
+    <h1>Fieldsmock Fund I</h1>
+
+    <p class="tagline">An equity-concentrated portfolio, with an intrinsic-value focus.</p>
+
+    <div class="overview">
+      <div class="overview-title">Fund Overview</div>
+      Inception: October 2023<br>
+      Mandate: Long-only equities<br>
+      Approach: Bottom-up valuation<br>
+      Benchmark: S&amp;P 500<br>
+      Reporting: Annual letters; returns shown on a time-weighted basis
     </div>
+
+    <div class="chart">
+      <img src="assets/TWR.png" alt="Time-Weighted Return Chart" style="width:100%;">
+    </div>
+
+    <div class="chart">
+      <img src="assets/CR.png" alt="Cumulative Return Chart" style="width:100%;">
+    </div>
+
+    <div class="chart">
+      <img src="assets/CAR.png" alt="Compound Annual Return Chart" style="width:100%;">
+    </div>
+
   </div>
 
   <script>

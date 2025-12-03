@@ -4,115 +4,65 @@
   <meta charset="UTF-8">
   <title>fieldsmock</title>
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=13">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=13">
-  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=13">
-  <link rel="apple-touch-icon" href="/favicon.png?v=13">
-
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
     body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
       font-family: Baskerville, serif;
-      margin: 40px 20px;
-      color: #000;
-    }
-    nav {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #000;
-      text-transform: lowercase;
-    }
-    .page {
-      max-width: 800px;
-      margin: 0 auto;
+      color: #999999;
       text-align: center;
     }
-    .logo img {
-      width: 48px;
+
+    .landing {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .landing img {
+      width: 150px;
       height: auto;
-      margin-bottom: 0px;
-      opacity: 0.9;
+      margin-bottom: 32px;
+      opacity: 0.95;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .tagline {
-      max-width: 320px;
-      margin: 10px auto 20px auto;
-      text-align: center;
-      line-height: 1.5;
+    .landing a {
+      text-decoration: none;
+      color: #999999;
+      font-size: 44px;      /* larger text */
+      font-weight: normal;
     }
 
-    .overview {
-      max-width: 600px;
-      margin: 30px auto;
-      line-height: 1.7;
-      text-align: left;
-    }
-    .chart {
-      max-width: 800px;
-      margin: 40px auto;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        margin: 28px 14px;
-      }
-      .page {
-        max-width: 100%;
-      }
-      .tagline {
-        max-width: 280px; /* slightly narrower for phone screens */
-      }
+    .landing a:hover {
+      color: #777;
     }
   </style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="index.html">fieldsmock</a>
-    <a href="about.html">about</a>
-    <a href="holdings.html">holdings</a>
-    <a href="letters.html">letters</a>
-  </nav>
-
-  <div class="page">
-
-    <div class="logo">
-      <img src="favicon.png" alt="Fieldsmock logo">
-    </div>
-
-    <h1 style="font-weight: normal; color: #999999;">Fieldsmock Fund I</h1>
-
-    <p class="tagline">An equity-concentrated portfolio, with an intrinsic-value focus.</p>
-
-    <div class="overview">
-      <strong>Fund Overview</strong><br>
-      Inception: October 2023<br>
-      Mandate: Long-only equities<br>
-      Approach: Bottom-up valuation<br>
-      Benchmark: S&amp;P 500<br>
-      Reporting: Annual letters; returns shown on a time-weighted basis<br>
-    </div>
-
-    <div class="chart">
-      <img src="assets/TWR.png" alt="Time-Weighted Return Chart" style="width:100%;">
-    </div>
-
-    <div class="chart">
-      <img src="assets/CR.png" alt="Cumulative Return Chart" style="width:100%;">
-    </div>
-
-    <div class="chart">
-      <img src="assets/CAR.png" alt="Compound Annual Return Chart" style="width:100%;">
-    </div>
-
+  <div class="landing">
+    <a href="FFI.html">
+      <img src="favicon.png" alt="fieldsmock icon">
+    </a>
+    <a href="FFI.html">fieldsmock</a>
   </div>
 
 </body>

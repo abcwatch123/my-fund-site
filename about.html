@@ -6,11 +6,11 @@
   <style>
     body {
       font-family: Baskerville, serif;
-      margin: 40px;
+      margin: 0;
       text-align: center;
     }
     nav {
-      margin-bottom: 20px;
+      margin: 40px 0 0 0; /* consistent top spacing for nav across all pages */
     }
     nav a {
       margin: 0 15px;
@@ -18,10 +18,13 @@
       color: #333;
       text-transform: lowercase;
     }
+    main {
+      margin-top: 40px; /* spacing from nav to text, matches homepage */
+    }
     p {
       max-width: 600px;
       line-height: 1.6;
-      margin: 40px auto 0 auto; /* Top margin to match homepage spacing */
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -32,7 +35,9 @@
     <a href="about.html">about</a>
   </nav>
 
-  <p>in the mud.</p>
+  <main>
+    <p>in the mud.</p>
+  </main>
 
 </body>
 </html>

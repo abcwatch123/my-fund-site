@@ -13,7 +13,7 @@
   <style>
     body {
       font-family: Baskerville, serif;
-      margin: 40px;
+      margin: 40px 20px;
       color: #000;
     }
     nav {
@@ -29,7 +29,8 @@
     .content {
       max-width: 700px;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.8;
+      text-align: left;
     }
     .letter-list p {
       margin: 12px 0;
@@ -40,6 +41,11 @@
     }
     .letter-list a:hover {
       text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      body {
+        margin: 28px 14px;
+      }
     }
   </style>
 </head>

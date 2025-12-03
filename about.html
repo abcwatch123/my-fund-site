@@ -13,9 +13,8 @@
   <style>
     body {
       font-family: Baskerville, serif;
-      margin: 40px;
+      margin: 40px 20px;
       color: #000;
-      text-align: center;
     }
     nav {
       text-align: center;
@@ -28,9 +27,9 @@
       text-transform: lowercase;
     }
     .content {
-      max-width: 600px;
+      max-width: 700px;
       margin: 40px auto 0 auto;
-      line-height: 1.7;
+      line-height: 1.8;
       text-align: left;
     }
     .image-container {
@@ -40,6 +39,11 @@
     .image-container img {
       max-width: 100%;
       height: auto;
+    }
+    @media (max-width: 600px) {
+      body {
+        margin: 28px 14px;
+      }
     }
   </style>
 </head>

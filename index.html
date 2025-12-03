@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About the Fund</title>
+  <title>My Fund Performance</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 40px; }
     h1 { text-align: center; }
+    .chart { max-width: 800px; margin: 40px auto; }
     nav { text-align: center; margin-bottom: 40px; }
     nav a { margin: 0 15px; text-decoration: none; color: #333; }
   </style>
@@ -16,7 +17,15 @@
     <a href="about.html">About</a>
   </nav>
 
-  <h1>About This Fund</h1>
-  <p>This website shows the performance of my investment portfolio. Charts display time-weighted returns, cumulative NAV, and benchmark comparisons.</p>
+  <h1>Fund Performance</h1>
+
+  <div class="chart">
+    <img src="assets/portfolio_vs_spxtr.png" alt="Portfolio vs SPXTR">
+  </div>
+
+  <div class="chart">
+    <img src="assets/cumulative_nav.png" alt="Cumulative NAV">
+  </div>
+
 </body>
 </html>

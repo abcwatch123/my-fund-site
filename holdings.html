@@ -37,7 +37,6 @@
       cursor: pointer;
     }
 
-    /* hidden until clicked */
     .main-nav {
       opacity: 0;
       pointer-events: none;
@@ -51,7 +50,6 @@
       white-space: nowrap;
     }
 
-    /* visible when clicked */
     .site-header.menu-open .main-nav {
       opacity: 1;
       pointer-events: auto;
@@ -60,7 +58,6 @@
       border-radius: 6px;
     }
 
-    /* also reveal on hover (desktop) */
     @media (min-width: 601px) {
       .site-header:hover .main-nav {
         opacity: 1;
@@ -84,7 +81,6 @@
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
-      padding-top: 20px;
     }
 
     h1 {
@@ -113,9 +109,6 @@
         margin: -28px -14px 28px -14px;
         padding: 16px 14px 10px 14px;
       }
-      .page {
-        padding-top: 12px;
-      }
     }
   </style>
 </head>
@@ -138,9 +131,9 @@
   <h1>Current</h1>
 
   <div class="holdings-list">
-    <div><a href="https://www.intc.com" target="_blank">INTC</a></div>
-    <div><a href="https://ir.aboutamazon.com" target="_blank">AMZN</a></div>
-    <div><a href="https://investor.fb.com" target="_blank">META</a></div>
+    <div><a href="https://www.intc.com/financials/annual-reports/default.aspx" target="_blank" rel="noopener noreferrer">INTC</a></div>
+    <div><a href="https://ir.aboutamazon.com/annual-reports-proxies-and-shareholder-letters/default.aspx" target="_blank" rel="noopener noreferrer">AMZN</a></div>
+    <div><a href="https://investor.fb.com/financials/default.aspx" target="_blank" rel="noopener noreferrer">META</a></div>
   </div>
 </div>
 

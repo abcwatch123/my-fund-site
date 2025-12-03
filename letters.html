@@ -7,53 +7,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body{font-family:Baskerville,serif;margin:40px 20px;color:#000;}
-
-    .site-header{
-      position:sticky;top:0;background:#fff;text-align:center;
-      margin:-40px -20px 36px -20px;padding:20px 20px 14px 20px;
-      box-sizing:border-box;z-index:100;
+    body {
+      font-family: Baskerville, serif;
+      margin: 40px 20px;
+      color: #000;
     }
 
-    .site-header-inner{position:relative;display:inline-block;}
-
-    .site-name{
-      font-size:20px;font-weight:normal;color:#000;
-      text-decoration:none;cursor:pointer;
+    .site-header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      text-align: center;
+      margin: -40px -20px 36px -20px;
+      padding: 20px 20px 14px 20px;
+      box-sizing: border-box;
+      z-index: 100;
     }
 
-    .main-nav{
-      opacity:0;pointer-events:none;transition:opacity .25s ease;
-      position:absolute;left:50%;transform:translateX(-50%);
-      margin-top:6px;display:flex;flex-direction:row;white-space:nowrap;
+    .site-header-inner {
+      position: relative;
+      display: inline-block;
     }
 
-    .site-header.menu-open .main-nav{
-      opacity:1;pointer-events:auto;background:#fff;
-      padding:10px 14px;border-radius:6px;
+    .site-name {
+      font-size: 20px;
+      font-weight: normal;
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    @media(min-width:601px){
-      .site-header:hover .main-nav{opacity:1;pointer-events:auto;}
+    .main-nav {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 6px;
+      display: flex;
+      flex-direction: row;
+      white-space: nowrap;
     }
 
-    .main-nav a{
-      margin:0 12px;text-decoration:none;color:#000;
-      font-size:16px;text-transform:lowercase;
+    .site-header.menu-open .main-nav {
+      opacity: 1;
+      pointer-events: auto;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
     }
 
-    .page{max-width:800px;margin:0 auto;padding-top:20px;}
-    h1{font-weight:normal;color:#999;margin-bottom:14px;}
+    @media (min-width: 601px) {
+      .site-header:hover .main-nav {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
 
-    p{margin:6px 0;font-size:18px;}
-    a{text-decoration:none;color:#000;}
-    a:hover{text-decoration:underline;}
+    .main-nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #000;
+      font-size: 16px;
+      text-transform: lowercase;
+    }
 
-    @media(max-width:600px){
-      body{margin:28px 14px;}
-      .site-header{
-        margin:-28px -14px 28px -14px;
-        padding:16px 14px 10px 14px;
+    .main-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    h1 {
+      font-weight: normal;
+      color: #999999;
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin: 6px 0;
+      font-size: 18px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body { margin: 28px 14px; }
+      .site-header {
+        margin: -28px -14px 28px -14px;
+        padding: 16px 14px 10px 14px;
       }
     }
   </style>
@@ -80,9 +134,10 @@
 </div>
 
 <script>
-  const header=document.getElementById("siteHeader");
-  const toggle=document.getElementById("toggleMenu");
-  toggle.addEventListener("click",e=>{
+  const header = document.getElementById("siteHeader");
+  const toggle = document.getElementById("toggleMenu");
+
+  toggle.addEventListener("click", (e) => {
     e.preventDefault();
     header.classList.toggle("menu-open");
   });

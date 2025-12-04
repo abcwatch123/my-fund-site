@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About – fieldsmock</title>
+  <title>fieldsmock</title>
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,10 +29,26 @@
       display: inline-block;
     }
 
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0 12px 0 0;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    .menu-button img {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
     .site-name {
       font-size: 20px;
       font-weight: normal;
-      color: #000;
+      color: #999999;
       text-decoration: none;
       cursor: pointer;
     }
@@ -70,12 +86,22 @@
     .main-nav a {
       margin: 0 12px;
       text-decoration: none;
-      color: #000;
+      color: #999999;
       font-size: 16px;
       text-transform: lowercase;
     }
 
-    .main-nav a:hover { text-decoration: underline; }
+    .main-nav a:hover {
+      text-decoration: underline;
+    }
+
+    a {
+      color: #999999;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
     .page {
       max-width: 800px;
@@ -87,6 +113,12 @@
       font-weight: normal;
       color: #999999;
       margin-bottom: 16px;
+    }
+
+    .about-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
     }
 
     .about-text {
@@ -101,10 +133,34 @@
     }
 
     @media (max-width: 600px) {
-      body { margin: 28px 14px; }
+      body {
+        margin: 28px 14px;
+      }
       .site-header {
         margin: -28px -14px 28px -14px;
-        padding: 16px 14px 10px 14px;
+        padding: 12px 14px 8px 14px;
+        text-align: left;
+      }
+      .site-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .menu-button {
+        display: block;
+      }
+      .main-nav {
+        position: static;
+        transform: none;
+        margin-top: 8px;
+        padding: 8px 0 0 0;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #fff;
+        border-radius: 0;
+      }
+      .main-nav a {
+        margin: 4px 0;
       }
     }
   </style>
@@ -114,7 +170,10 @@
 
 <header class="site-header" id="siteHeader">
   <div class="site-header-inner">
-    <a href="#" id="toggleMenu" class="site-name">fieldsmock</a>
+    <button id="menuButton" class="menu-button" aria-label="Menu">
+      <img src="favicon.png" alt="Menu">
+    </button>
+    <a href="index.html" class="site-name">fieldsmock</a>
     <nav class="main-nav" id="mainNav">
       <a href="index.html">ffi</a>
       <a href="holdings.html">holdings</a>
@@ -125,7 +184,9 @@
 </header>
 
 <div class="page">
-  <h1>field· smock</h1>
+  <h1 class="about-logo">
+    <img src="favicon.png" alt="fieldsmock logo">
+  </h1>
 
   <p class="about-text">
     A field smock is perfect when you're in the mud, which is often how it feels&nbsp;like&nbsp;investing.
@@ -138,12 +199,14 @@
 
 <script>
   const header = document.getElementById("siteHeader");
-  const toggle = document.getElementById("toggleMenu");
+  const menuButton = document.getElementById("menuButton");
 
-  toggle.addEventListener("click", function (e) {
-    e.preventDefault();
-    header.classList.toggle("menu-open");
-  });
+  if (menuButton) {
+    menuButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      header.classList.toggle("menu-open");
+    });
+  }
 </script>
 
 </body>

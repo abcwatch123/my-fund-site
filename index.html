@@ -23,12 +23,27 @@
       padding: 20px 20px 14px 20px;
       box-sizing: border-box;
       z-index: 100;
-      transition: transform 0.5s ease, margin 0.5s ease, padding 0.5s ease, background 0.5s ease;
     }
 
     .site-header-inner {
       position: relative;
       display: inline-block;
+    }
+
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0 12px 0 0;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    .menu-button img {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
 
     .site-name {
@@ -39,15 +54,7 @@
       cursor: pointer;
     }
 
-    /* Intro logo, only visible during intro */
-    .intro-logo {
-      display: none;
-      margin: 0 auto 12px auto;
-      width: 72px;
-      height: auto;
-    }
-
-    /* NAV: same box in both states to avoid jumping */
+    /* NAV: stable box to avoid jumping */
     .main-nav {
       opacity: 0;
       pointer-events: none;
@@ -90,13 +97,20 @@
       text-decoration: underline;
     }
 
+    /* === LINKS (page content) === */
+    a {
+      color: #999999;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
     /* === PAGE CONTENT === */
     .page {
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
-      opacity: 1;
-      transition: opacity 0.4s ease;
     }
 
     h1 {
@@ -114,6 +128,7 @@
       max-width: 600px;
       margin: 20px 0 36px 0;
       line-height: 1.7;
+      color: #000;
     }
 
     .chart {
@@ -121,57 +136,49 @@
       margin: 30px 0;
     }
 
-    /* === INTRO STATE === */
-    body.intro .site-header {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin: 0;
-      padding: 0;
-      background: transparent;
-    }
-
-    body.intro .intro-logo {
-      display: block;
-    }
-
-    body.intro .site-name {
-      font-size: 26px;
-    }
-
-    body.intro .main-nav {
-      display: none;
-    }
-
-    body.intro .page {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* AFTER INTRO */
-    body.ready .page {
-      opacity: 1;
-    }
-
+    /* === MOBILE === */
     @media (max-width: 600px) {
       body {
         margin: 28px 14px;
       }
       .site-header {
         margin: -28px -14px 28px -14px;
-        padding: 16px 14px 10px 14px;
+        padding: 12px 14px 8px 14px;
+        text-align: left;
+      }
+      .site-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .menu-button {
+        display: block;
+      }
+      .main-nav {
+        position: static;
+        transform: none;
+        margin-top: 8px;
+        padding: 8px 0 0 0;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #fff;
+        border-radius: 0;
+      }
+      .main-nav a {
+        margin: 4px 0;
       }
     }
   </style>
 </head>
 
-<body class="intro">
+<body>
 
 <header class="site-header" id="siteHeader">
   <div class="site-header-inner">
-    <img src="favicon.png" alt="fieldsmock" class="intro-logo">
-    <a href="#" id="toggleMenu" class="site-name">fieldsmock</a>
+    <button id="menuButton" class="menu-button" aria-label="Menu">
+      <img src="favicon.png" alt="Menu">
+    </button>
+    <a href="index.html" class="site-name">fieldsmock</a>
     <nav class="main-nav" id="mainNav">
       <a href="index.html">ffi</a>
       <a href="holdings.html">holdings</a>
@@ -208,31 +215,15 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const body = document.body;
-    const header = document.getElementById("siteHeader");
-    const toggle = document.getElementById("toggleMenu");
+  const header = document.getElementById("siteHeader");
+  const menuButton = document.getElementById("menuButton");
 
-    // Menu toggle
-    toggle.addEventListener("click", function (e) {
+  if (menuButton) {
+    menuButton.addEventListener("click", function (e) {
       e.preventDefault();
       header.classList.toggle("menu-open");
     });
-
-    // Intro animation: only first visit per tab
-    const introSeen = sessionStorage.getItem("fsIntroSeen");
-
-    if (introSeen) {
-      body.classList.remove("intro");
-      body.classList.add("ready");
-    } else {
-      setTimeout(function () {
-        body.classList.remove("intro");
-        body.classList.add("ready");
-        sessionStorage.setItem("fsIntroSeen", "1");
-      }, 1000);
-    }
-  });
+  }
 </script>
 
 </body>

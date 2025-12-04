@@ -3,77 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <title>fieldsmock</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     body {
       font-family: Baskerville, serif;
       margin: 40px 20px;
       color: #000;
     }
-    .page {
-      max-width: 800px;
-      margin: 0 auto;
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      margin: -40px -20px 36px -20px;
+      padding: 16px 20px 10px 20px;
+      box-sizing: border-box;
+      z-index: 100;
     }
-    nav {
-      text-align: center;
-      margin-bottom: 40px;
+
+    .site-header-inner {
+      position: relative;
+      height: 32px;
     }
-    nav a {
-      margin: 0 15px;
+
+    .logo-with-text,
+    .main-nav {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.45s ease;
+    }
+
+    .logo-with-text,
+    .main-nav {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo-with-text {
+      gap: 8px;
+      cursor: pointer;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .logo-icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .site-name {
+      font-size: 24px;
+      font-weight: normal;
+      color: #999999;
       text-decoration: none;
-      color: #999999;
-      text-transform: lowercase;
+      cursor: default;
+      user-select: none;
     }
-    .title {
-      font-size: 32px;
-      margin-bottom: 20px;
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .main-nav {
+      gap: 18px;
+      white-space: nowrap;
+      font-size: 16px;
+      text-transform: lowercase;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .main-nav a {
       color: #999999;
+      text-decoration: none;
+    }
+
+    .main-nav a:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .site-header.menu-open .logo-with-text {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .site-header.menu-open .main-nav {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (min-width: 601px) {
+      .site-header:hover .logo-with-text {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .site-header:hover .main-nav {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.7;
       text-align: left;
     }
-    .content {
-      line-height: 1.7;
-      margin-top: 20px;
+
+    h1 {
+      font-weight: normal;
+      color: #999999;
+      margin-bottom: 18px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        margin: 28px 14px;
+      }
+      .site-header {
+        margin: -28px -14px 28px -14px;
+        padding: 8px 14px 6px 14px;
+      }
+      .site-header-inner {
+        height: 32px;
+      }
+      .logo-with-text,
+      .main-nav {
+        left: 14px;
+        transform: none;
+      }
+      .main-nav {
+        gap: 12px;
+        flex-wrap: wrap;
+        row-gap: 4px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header class="site-header" id="siteHeader">
-    <div class="site-header-inner">
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <div id="toggleMenu" class="logo-with-text">
+      <img src="favicon.png" alt="" class="logo-icon">
       <span class="site-name">fieldsmock</span>
-      <nav class="main-nav" id="mainNav">
-        <a href="ffi.html">ffi</a>
-        <a href="holdings.html">holdings</a>
-        <a href="letters.html">letters</a>
-        <a href="about.html">about</a>
-      </nav>
     </div>
-  </header>
-
-  <div class="page">
-    <h1 class="title">2023</h1>
-
-    <div class="content">
-      <p>The only honest way to begin this letter is to say that the past twenty four months have been difficult. Every fund goes through both good times and bad. What is important is to learn from the mistakes and keep moving forward.</p>
-
-      <p>Last year we chose to remain invested in Chinese equities. At one point in January the fund was up over twenty percent, yet we held on. Our view then was simple. If the Chinese economy reopened in a meaningful way and if geopolitical tensions eased, the gap between price and value would close.</p>
-
-      <p>Many of the things we expected did come to pass. China cooperated with the PCAOB and allowed full audit access, which removed the risk of forced delistings in the United States. China abandoned Covid zero entirely, which was essential for growth and for preventing further capital flight. The government also began to soften its stance on domestic technology firms. It approved new games from Tencent and NetEase and publicly voiced support for platform companies. We believed the final confirmation would be the approval of the ANT IPO, since that was where the crackdown began. That has taken longer, but the direction of travel is clearer.</p>
-
-      <p>Yet even with these developments, the outcome did not match what the market needed. The Chinese government has not done enough to repair the damage caused by lockdowns and the pressure placed on private enterprise. And although the tone between China and the west has softened at times, the relationship has changed in a lasting way. Concerns about military power, data security, and the war in Ukraine have made the United States view China more as a strategic rival than a long term partner. This has held back global demand for Chinese equities and kept valuations depressed.</p>
-
-      <p>With this in mind, we cut our losses and ended the year with a negative double digit return. The real question then is what to do next.</p>
-
-      <p>We do what every athlete does when they have been knocked back temporarily. We get back up, learn, and go again. This year we return to what we know best. We will refocus the portfolio on global consumer and technology firms. These are businesses with minimal geopolitical risk, strong fundamentals, and clear economic moats.</p>
-
-      <p>Since this shift, the portfolio has shown meaningful improvement. The companies we own are growing well on both top and bottom lines. The interest rate environment is turning more favourable and there is a real sense of momentum again. We believe that returning to our roots gives us the best chance of delivering strong long term results for our investors.</p>
-
-      <p>China remains undervalued and in some ways still misunderstood. But we have to be honest with ourselves when the path ahead is clouded beyond what we are comfortable with. Narrative and numbers must ultimately yield to the world in which they live.</p>
-
-      <p>Nonetheless, we remain long on humanity.</p>
-    </div>
+    <nav class="main-nav" id="mainNav">
+      <a href="ffi.html">ffi</a>
+      <a href="holdings.html">holdings</a>
+      <a href="letters.html">letters</a>
+      <a href="about.html">about</a>
+    </nav>
   </div>
+</header>
+
+<div class="page">
+  <h1>2023</h1>
+
+  <p>The only honest way to begin this letter is to say that the past twenty four months have been difficult. Every fund goes through both good times and bad. What is important is to learn from the mistakes and keep moving forward.</p>
+
+  <p>Last year we chose to remain invested in Chinese equities. At one point in January the fund was up over twenty percent, yet we held on. Our view then was simple. If the Chinese economy reopened in a meaningful way and if geopolitical tensions eased, the gap between price and value would close.</p>
+
+  <p>Many of the things we expected did come to pass. China cooperated with the PCAOB and allowed full audit access, which removed the risk of forced delistings in the United States. China abandoned Covid zero entirely, which was essential for growth and for preventing further capital flight. The government also began to soften its stance on domestic technology firms. It approved new games from Tencent and NetEase and publicly voiced support for platform companies. We believed the final confirmation would be the approval of the ANT IPO, since that was where the crackdown began. That has taken longer, but the direction of travel is clearer.</p>
+
+  <p>Yet even with these developments, the outcome did not match what the market needed. The Chinese government has not done enough to repair the damage caused by lockdowns and the pressure placed on private enterprise. And although the tone between China and the west has softened at times, the relationship has changed in a lasting way. Concerns about military power, data security, and the war in Ukraine have made the United States view China more as a strategic rival than a long term partner. This has held back global demand for Chinese equities and kept valuations depressed.</p>
+
+  <p>With this in mind, we cut our losses and ended the year with a negative double digit return. The real question then is what to do next.</p>
+
+  <p>We do what every athlete does when they have been knocked back temporarily. We get back up, learn, and go again. This year we return to what we know best. We will refocus the portfolio on global consumer and technology firms. These are businesses with minimal geopolitical risk, strong fundamentals, and clear economic moats.</p>
+
+  <p>Since this shift, the portfolio has shown meaningful improvement. The companies we own are growing well on both top and bottom lines. The interest rate environment is turning more favourable and there is a real sense of momentum again. We believe that returning to our roots gives us the best chance of delivering strong long term results for our investors.</p>
+
+  <p>China remains undervalued and in some ways still misunderstood. But we have to be honest with ourselves when the path ahead is clouded beyond what we are comfortable with. Narrative and numbers must ultimately yield to the world in which they live.</p>
+
+  <p>Nonetheless, we remain long on humanity.</p>
+</div>
+
+<script>
+  const header = document.getElementById("siteHeader");
+  const toggleMenu = document.getElementById("toggleMenu");
+
+  let lastScrollY = window.scrollY;
+  let scrollIntent = null;
+  let scrollTimeout = null;
+
+  function openMenu() {
+    header.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    header.classList.remove("menu-open");
+  }
+
+  function scheduleMenuUpdate(open) {
+    scrollIntent = open;
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+    scrollTimeout = setTimeout(() => {
+      if (scrollIntent) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+      scrollTimeout = null;
+    }, 200);
+  }
+
+  if (toggleMenu) {
+    toggleMenu.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (header.classList.contains("menu-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    if (!header.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("scroll", function () {
+    const currentY = window.scrollY;
+    if (currentY < lastScrollY - 5) {
+      scheduleMenuUpdate(true);
+    } else if (currentY > lastScrollY + 5) {
+      scheduleMenuUpdate(false);
+    }
+    lastScrollY = currentY;
+  });
+</script>
 
 </body>
 </html>

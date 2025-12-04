@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ffi – fieldsmock</title>
+  <title>fieldsmock</title>
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,25 +13,54 @@
       color: #000;
     }
 
-    /* Sticky header with centred site name */
+    /* === HEADER === */
     .site-header {
       position: sticky;
       top: 0;
       background: #fff;
-      text-align: center;
       margin: -40px -20px 36px -20px;
-      padding: 20px 20px 14px 20px;
+      padding: 16px 20px 10px 20px;
       box-sizing: border-box;
       z-index: 100;
     }
 
     .site-header-inner {
       position: relative;
-      display: inline-block;
+      height: 32px; /* keeps header height fixed */
+    }
+
+    .logo-with-text,
+    .main-nav {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.25s ease;
+    }
+
+    /* Centered on desktop */
+    .logo-with-text,
+    .main-nav {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo-with-text {
+      gap: 8px;
+      cursor: pointer;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .logo-icon {
+      width: 22px;
+      height: 22px;
+      display: block;
     }
 
     .site-name {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: normal;
       color: #999999;
       text-decoration: none;
@@ -39,47 +68,58 @@
       user-select: none;
     }
 
-    /* Main nav — hidden until menu-open */
     .main-nav {
+      gap: 18px;
+      white-space: nowrap;
+      font-size: 16px;
+      text-transform: lowercase;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-top: 6px;
-      display: flex;
-      flex-direction: row;
-      white-space: nowrap;
     }
 
-    /* Visible when clicked or toggled */
+    .main-nav a {
+      color: #999999;
+      text-decoration: none;
+    }
+
+    .main-nav a:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    /* Content links: black */
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    /* When menu is open: fade menu in, logo out */
+    .site-header.menu-open .logo-with-text {
+      opacity: 0;
+      pointer-events: none;
+    }
     .site-header.menu-open .main-nav {
       opacity: 1;
       pointer-events: auto;
-      background: #fff;
-      padding: 10px 14px;
-      border-radius: 6px;
     }
 
-    /* Hover reveal on desktop */
+    /* Desktop hover also reveals menu */
     @media (min-width: 601px) {
+      .site-header:hover .logo-with-text {
+        opacity: 0;
+        pointer-events: none;
+      }
       .site-header:hover .main-nav {
         opacity: 1;
         pointer-events: auto;
       }
     }
 
-    .main-nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #000;
-      font-size: 16px;
-      text-transform: lowercase;
-    }
-
-    .main-nav a:hover { text-decoration: underline; }
-
+    /* PAGE CONTENT */
     .page {
       max-width: 800px;
       margin: 0 auto;
@@ -101,6 +141,7 @@
       max-width: 600px;
       margin: 20px 0 36px 0;
       line-height: 1.7;
+      color: #000;
     }
 
     .chart {
@@ -108,11 +149,27 @@
       margin: 30px 0;
     }
 
+    /* MOBILE */
     @media (max-width: 600px) {
-      body { margin: 28px 14px; }
+      body {
+        margin: 28px 14px;
+      }
       .site-header {
         margin: -28px -14px 28px -14px;
-        padding: 16px 14px 10px 14px;
+        padding: 8px 14px 6px 14px;
+      }
+      .site-header-inner {
+        height: 32px;
+      }
+      .logo-with-text,
+      .main-nav {
+        left: 14px;
+        transform: none;
+      }
+      .main-nav {
+        gap: 12px;
+        flex-wrap: wrap;
+        row-gap: 4px;
       }
     }
   </style>
@@ -122,9 +179,12 @@
 
 <header class="site-header" id="siteHeader">
   <div class="site-header-inner">
-    <a href="#" id="toggleMenu" class="site-name">fieldsmock</a>
+    <div id="toggleMenu" class="logo-with-text">
+      <img src="favicon.png" alt="" class="logo-icon">
+      <span class="site-name">fieldsmock</span>
+    </div>
     <nav class="main-nav" id="mainNav">
-      <a href="FFI.html">ffi</a>
+      <a href="ffi.html">ffi</a>
       <a href="holdings.html">holdings</a>
       <a href="letters.html">letters</a>
       <a href="about.html">about</a>
@@ -141,21 +201,82 @@
     Inception: October 2023<br>
     Mandate: Long-only equities<br>
     Approach: Bottom-up valuation<br>
-    Benchmark: S&P 500<br>
+    Benchmark: S&amp;P 500<br>
     Reporting: Annual letters; returns shown on a time-weighted basis.
   </div>
 
-  <div class="chart"><img src="assets/TWR.png" style="width:100%;"></div>
-  <div class="chart"><img src="assets/CR.png" style="width:100%;"></div>
-  <div class="chart"><img src="assets/CAR.png" style="width:100%;"></div>
+  <div class="chart">
+    <img src="assets/TWR.png" alt="Time-Weighted Return Chart" style="width:100%;">
+  </div>
+
+  <div class="chart">
+    <img src="assets/CR.png" alt="Cumulative Return Chart" style="width:100%;">
+  </div>
+
+  <div class="chart">
+    <img src="assets/CAR.png" alt="Compound Annual Return Chart" style="width:100%;">
+  </div>
 </div>
 
 <script>
   const header = document.getElementById("siteHeader");
-  const toggle = document.getElementById("toggleMenu");
-  toggle.addEventListener("click", e => {
-    e.preventDefault();
-    header.classList.toggle("menu-open");
+  const toggleMenu = document.getElementById("toggleMenu");
+
+  let lastScrollY = window.scrollY;
+  let scrollIntent = null;
+  let scrollTimeout = null;
+
+  function openMenu() {
+    header.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    header.classList.remove("menu-open");
+  }
+
+  function scheduleMenuUpdate(open) {
+    scrollIntent = open;
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+    scrollTimeout = setTimeout(() => {
+      if (scrollIntent) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+      scrollTimeout = null;
+    }, 140); // inertia delay (ms)
+  }
+
+  if (toggleMenu) {
+    toggleMenu.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (header.classList.contains("menu-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  }
+
+  // Close when clicking outside header
+  document.addEventListener("click", function (e) {
+    if (!header.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Scroll behaviour with inertia: up = reveal, down = hide
+  window.addEventListener("scroll", function () {
+    const currentY = window.scrollY;
+    if (currentY < lastScrollY - 5) {
+      scheduleMenuUpdate(true);
+    } else if (currentY > lastScrollY + 5) {
+      scheduleMenuUpdate(false);
+    }
+    lastScrollY = currentY;
   });
 </script>
 

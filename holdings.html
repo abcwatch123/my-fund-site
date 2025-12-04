@@ -34,24 +34,45 @@
       background: none;
       border: none;
       padding: 0;
-      margin: 0 12px 0 0;
+      margin: 0 10px 0 0;
       cursor: pointer;
       vertical-align: middle;
     }
 
     .menu-button img {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .logo-with-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      width: 22px;
+      height: 22px;
       display: block;
     }
 
     .site-name {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: normal;
       color: #999999;
       text-decoration: none;
       cursor: default;
       user-select: none;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #000;
+      text-decoration: underline;
     }
 
     .main-nav {
@@ -95,15 +116,6 @@
     .main-nav a:hover {
       text-decoration: none;
       color: #ffffff;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-      color: #000;
     }
 
     .page {
@@ -165,7 +177,10 @@
     <button id="menuButton" class="menu-button" aria-label="Menu">
       <img src="favicon.png" alt="Menu">
     </button>
-    <span id="siteName" class="site-name">fieldsmock</span>
+    <div id="toggleMenu" class="logo-with-text">
+      <img src="favicon.png" alt="" class="logo-icon">
+      <span class="site-name">fieldsmock</span>
+    </div>
     <nav class="main-nav" id="mainNav">
       <a href="index.html">ffi</a>
       <a href="holdings.html">holdings</a>
@@ -188,23 +203,40 @@
 <script>
   const header = document.getElementById("siteHeader");
   const menuButton = document.getElementById("menuButton");
-  const siteName = document.getElementById("siteName");
+  const toggleMenu = document.getElementById("toggleMenu");
+
+  function isMobile() {
+    return window.innerWidth <= 600;
+  }
 
   if (menuButton) {
     menuButton.addEventListener("click", function (e) {
       e.preventDefault();
+      e.stopPropagation();
       header.classList.toggle("menu-open");
     });
   }
 
-  if (siteName) {
-    siteName.addEventListener("click", function (e) {
-      if (window.innerWidth <= 600) {
-        e.preventDefault();
-        header.classList.toggle("menu-open");
-      }
+  if (toggleMenu) {
+    toggleMenu.addEventListener("click", function (e) {
+      if (!isMobile()) return;
+      e.preventDefault();
+      e.stopPropagation();
+      header.classList.toggle("menu-open");
     });
   }
+
+  document.addEventListener("click", function (e) {
+    if (!isMobile()) return;
+    if (!header.contains(e.target)) {
+      header.classList.remove("menu-open");
+    }
+  });
+
+  window.addEventListener("scroll", function () {
+    if (!isMobile()) return;
+    header.classList.remove("menu-open");
+  });
 </script>
 
 </body>

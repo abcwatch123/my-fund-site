@@ -40,7 +40,7 @@
     .main-nav {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease, background 0.25s ease;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -48,20 +48,22 @@
       display: flex;
       flex-direction: row;
       white-space: nowrap;
+      padding: 10px 14px;
+      border-radius: 6px;
+      background: transparent;
     }
 
     .site-header.menu-open .main-nav {
       opacity: 1;
       pointer-events: auto;
       background: #fff;
-      padding: 10px 14px;
-      border-radius: 6px;
     }
 
     @media (min-width: 601px) {
       .site-header:hover .main-nav {
         opacity: 1;
         pointer-events: auto;
+        background: #fff;
       }
     }
 
@@ -73,9 +75,7 @@
       text-transform: lowercase;
     }
 
-    .main-nav a:hover {
-      text-decoration: underline;
-    }
+    .main-nav a:hover { text-decoration: underline; }
 
     .page {
       max-width: 800px;
@@ -119,7 +119,7 @@
   <div class="site-header-inner">
     <a href="#" id="toggleMenu" class="site-name">fieldsmock</a>
     <nav class="main-nav" id="mainNav">
-      <a href="FFI.html">ffi</a>
+      <a href="index.html">ffi</a>
       <a href="holdings.html">holdings</a>
       <a href="letters.html">letters</a>
       <a href="about.html">about</a>
@@ -137,7 +137,7 @@
   const header = document.getElementById("siteHeader");
   const toggle = document.getElementById("toggleMenu");
 
-  toggle.addEventListener("click", (e) => {
+  toggle.addEventListener("click", function (e) {
     e.preventDefault();
     header.classList.toggle("menu-open");
   });

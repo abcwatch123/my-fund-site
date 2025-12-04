@@ -25,17 +25,32 @@
     }
 
     .site-header-inner {
+      position: relative;
+      height: 32px; /* keeps header height fixed */
+    }
+
+    .logo-with-text,
+    .main-nav {
+      position: absolute;
+      top: 0;
+      bottom: 0;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 24px;
+      transition: opacity 0.25s ease;
+    }
+
+    /* Centered on desktop */
+    .logo-with-text,
+    .main-nav {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .logo-with-text {
-      display: inline-flex;
-      align-items: center;
       gap: 8px;
       cursor: pointer;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .logo-icon {
@@ -53,24 +68,13 @@
       user-select: none;
     }
 
-    /* CONTENT LINKS (black) */
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #000;
-      text-decoration: underline;
-    }
-
-    /* NAV */
     .main-nav {
-      display: none;
-      align-items: center;
       gap: 18px;
       white-space: nowrap;
       font-size: 16px;
       text-transform: lowercase;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .main-nav a {
@@ -83,21 +87,35 @@
       text-decoration: none;
     }
 
-    /* When menu is open: show nav instead of logo */
-    .site-header.menu-open .logo-with-text {
-      display: none;
+    /* Content links: black */
+    a {
+      color: #000;
+      text-decoration: none;
     }
-    .site-header.menu-open .main-nav {
-      display: flex;
+    a:hover {
+      color: #000;
+      text-decoration: underline;
     }
 
-    /* Desktop hover: also reveal menu in place of logo */
+    /* When menu is open: fade menu in, logo out */
+    .site-header.menu-open .logo-with-text {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .site-header.menu-open .main-nav {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Desktop hover also reveals menu */
     @media (min-width: 601px) {
       .site-header:hover .logo-with-text {
-        display: none;
+        opacity: 0;
+        pointer-events: none;
       }
       .site-header:hover .main-nav {
-        display: flex;
+        opacity: 1;
+        pointer-events: auto;
       }
     }
 
@@ -141,10 +159,15 @@
         padding: 8px 14px 6px 14px;
       }
       .site-header-inner {
-        justify-content: flex-start;
-        gap: 16px;
+        height: 32px;
+      }
+      .logo-with-text,
+      .main-nav {
+        left: 14px;
+        transform: none;
       }
       .main-nav {
+        gap: 12px;
         flex-wrap: wrap;
         row-gap: 4px;
       }
@@ -221,7 +244,7 @@
     });
   }
 
-  // Close when clicking outside (mainly mobile)
+  // Close when clicking outside header (both desktop & mobile)
   document.addEventListener("click", function (e) {
     if (!header.contains(e.target)) {
       closeMenu();

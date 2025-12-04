@@ -17,7 +17,6 @@
       position: sticky;
       top: 0;
       background: #fff;
-      text-align: center;
       margin: -40px -20px 36px -20px;
       padding: 16px 20px 10px 20px;
       box-sizing: border-box;
@@ -25,8 +24,10 @@
     }
 
     .site-header-inner {
-      position: relative;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
     }
 
     .logo-with-text {
@@ -61,46 +62,38 @@
     }
 
     .main-nav {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease, background 0.25s ease;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-top: 6px;
-      display: flex;
-      flex-direction: row;
+      display: none;
+      align-items: center;
+      gap: 18px;
       white-space: nowrap;
-      padding: 10px 14px;
-      border-radius: 6px;
-      background: transparent;
-    }
-
-    .site-header.menu-open .main-nav {
-      opacity: 1;
-      pointer-events: auto;
-      background: #fff;
-    }
-
-    @media (min-width: 601px) {
-      .site-header:hover .main-nav {
-        opacity: 1;
-        pointer-events: auto;
-        background: #fff;
-      }
-    }
-
-    .main-nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #999999;
       font-size: 16px;
       text-transform: lowercase;
     }
 
-    .main-nav a:hover {
+    .main-nav a {
+      color: #999999;
       text-decoration: none;
+    }
+
+    .main-nav a:hover {
       color: #ffffff;
+      text-decoration: none;
+    }
+
+    .site-header.menu-open .logo-with-text {
+      display: none;
+    }
+    .site-header.menu-open .main-nav {
+      display: flex;
+    }
+
+    @media (min-width: 601px) {
+      .site-header:hover .logo-with-text {
+        display: none;
+      }
+      .site-header:hover .main-nav {
+        display: flex;
+      }
     }
 
     .page {
@@ -127,26 +120,14 @@
       .site-header {
         margin: -28px -14px 28px -14px;
         padding: 8px 14px 6px 14px;
-        text-align: left;
       }
       .site-header-inner {
-        display: flex;
-        align-items: center;
         justify-content: flex-start;
+        gap: 16px;
       }
       .main-nav {
-        position: absolute;
-        left: 0;
-        right: 0;
-        transform: none;
-        margin-top: 4px;
-        padding: 8px 14px;
-        justify-content: flex-start;
-        background: #fff;
-        border-radius: 0;
-      }
-      .main-nav a {
-        margin: 0 12px 0 0;
+        flex-wrap: wrap;
+        row-gap: 4px;
       }
     }
   </style>
@@ -179,29 +160,42 @@
   const header = document.getElementById("siteHeader");
   const toggleMenu = document.getElementById("toggleMenu");
 
-  function isMobile() {
-    return window.innerWidth <= 600;
+  let lastScrollY = window.scrollY;
+
+  function openMenu() {
+    header.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    header.classList.remove("menu-open");
   }
 
   if (toggleMenu) {
     toggleMenu.addEventListener("click", function (e) {
-      if (!isMobile()) return;
       e.preventDefault();
       e.stopPropagation();
-      header.classList.toggle("menu-open");
+      if (header.classList.contains("menu-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
   }
 
   document.addEventListener("click", function (e) {
-    if (!isMobile()) return;
     if (!header.contains(e.target)) {
-      header.classList.remove("menu-open");
+      closeMenu();
     }
   });
 
   window.addEventListener("scroll", function () {
-    if (!isMobile()) return;
-    header.classList.remove("menu-open");
+    const currentY = window.scrollY;
+    if (currentY < lastScrollY - 5) {
+      openMenu();
+    } else if (currentY > lastScrollY + 5) {
+      closeMenu();
+    }
+    lastScrollY = currentY;
   });
 </script>
 

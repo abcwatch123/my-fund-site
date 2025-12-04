@@ -165,7 +165,7 @@
       <span class="site-name">fieldsmock</span>
     </div>
     <nav class="main-nav" id="mainNav">
-      <a href="index.html">ffi</a>
+      <a href="ffi.html">ffi</a>
       <a href="holdings.html">holdings</a>
       <a href="letters.html">letters</a>
       <a href="about.html">about</a>
@@ -210,6 +210,8 @@
   const toggleMenu = document.getElementById("toggleMenu");
 
   let lastScrollY = window.scrollY;
+  let scrollIntent = null;
+  let scrollTimeout = null;
 
   function openMenu() {
     header.classList.add("menu-open");
@@ -217,6 +219,21 @@
 
   function closeMenu() {
     header.classList.remove("menu-open");
+  }
+
+  function scheduleMenuUpdate(open) {
+    scrollIntent = open;
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+    scrollTimeout = setTimeout(() => {
+      if (scrollIntent) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+      scrollTimeout = null;
+    }, 140);
   }
 
   if (toggleMenu) {
@@ -240,9 +257,9 @@
   window.addEventListener("scroll", function () {
     const currentY = window.scrollY;
     if (currentY < lastScrollY - 5) {
-      openMenu();
+      scheduleMenuUpdate(true);
     } else if (currentY > lastScrollY + 5) {
-      closeMenu();
+      scheduleMenuUpdate(false);
     }
     lastScrollY = currentY;
   });

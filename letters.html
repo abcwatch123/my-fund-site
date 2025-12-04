@@ -3,241 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <title>fieldsmock</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <style>
     body {
       font-family: Baskerville, serif;
       margin: 40px 20px;
       color: #000;
     }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      background: #fff;
-      margin: -40px -20px 36px -20px;
-      padding: 16px 20px 10px 20px;
-      box-sizing: border-box;
-      z-index: 100;
-    }
-
-    .site-header-inner {
-      position: relative;
-      height: 32px;
-    }
-
-    .logo-with-text,
-    .main-nav {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      transition: opacity 0.45s ease;
-    }
-
-    .logo-with-text,
-    .main-nav {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .logo-with-text {
-      gap: 8px;
-      cursor: pointer;
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .logo-icon {
-      width: 22px;
-      height: 22px;
-      display: block;
-    }
-
-    .site-name {
-      font-size: 24px;
-      font-weight: normal;
-      color: #999999;
-      text-decoration: none;
-      cursor: default;
-      user-select: none;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #000;
-      text-decoration: underline;
-    }
-
-    .main-nav {
-      gap: 18px;
-      white-space: nowrap;
-      font-size: 16px;
-      text-transform: lowercase;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .main-nav a {
-      color: #999999;
-      text-decoration: none;
-    }
-
-    .main-nav a:hover {
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .site-header.menu-open .logo-with-text {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .site-header.menu-open .main-nav {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    @media (min-width: 601px) {
-      .site-header:hover .logo-with-text {
-        opacity: 0;
-        pointer-events: none;
-      }
-      .site-header:hover .main-nav {
-        opacity: 1;
-        pointer-events: auto;
-      }
-    }
-
     .page {
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
     }
-
-    h1 {
-      font-weight: normal;
+    nav {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
       color: #999999;
-      margin-bottom: 14px;
+      text-transform: lowercase;
     }
-
-    p {
-      margin: 6px 0;
-      font-size: 18px;
+    h1 {
+      font-size: 32px;
+      color: #999999;
+      margin-bottom: 20px;
     }
-
-    @media (max-width: 600px) {
-      body {
-        margin: 28px 14px;
-      }
-      .site-header {
-        margin: -28px -14px 28px -14px;
-        padding: 8px 14px 6px 14px;
-      }
-      .site-header-inner {
-        height: 32px;
-      }
-      .logo-with-text,
-      .main-nav {
-        left: 14px;
-        transform: none;
-      }
-      .main-nav {
-        gap: 12px;
-        flex-wrap: wrap;
-        row-gap: 4px;
-      }
+    .letter-link {
+      font-size: 20px;
+      margin: 12px 0;
+    }
+    .letter-link a {
+      text-decoration: none;
+      color: #000;
     }
   </style>
 </head>
 
 <body>
 
-<header class="site-header" id="siteHeader">
-  <div class="site-header-inner">
-    <div id="toggleMenu" class="logo-with-text">
-      <img src="favicon.png" alt="" class="logo-icon">
+  <header class="site-header" id="siteHeader">
+    <div class="site-header-inner">
       <span class="site-name">fieldsmock</span>
+      <nav class="main-nav" id="mainNav">
+        <a href="ffi.html">ffi</a>
+        <a href="holdings.html">holdings</a>
+        <a href="letters.html">letters</a>
+        <a href="about.html">about</a>
+      </nav>
     </div>
-    <nav class="main-nav" id="mainNav">
-      <a href="ffi.html">ffi</a>
-      <a href="holdings.html">holdings</a>
-      <a href="letters.html">letters</a>
-      <a href="about.html">about</a>
-    </nav>
+  </header>
+
+  <div class="page">
+    <h1>Slightly organised thoughts</h1>
+
+    <div class="letter-link"><a href="letter-2023.html">2023</a></div>
+    <div class="letter-link"><a href="letter-0.html">0</a></div>
+
   </div>
-</header>
-
-<div class="page">
-  <h1>Slightly organised thoughts</h1>
-
-  <p><a href="letter-0.html">0</a></p>
-</div>
-
-<script>
-  const header = document.getElementById("siteHeader");
-  const toggleMenu = document.getElementById("toggleMenu");
-
-  let lastScrollY = window.scrollY;
-  let scrollIntent = null;
-  let scrollTimeout = null;
-
-  function openMenu() {
-    header.classList.add("menu-open");
-  }
-
-  function closeMenu() {
-    header.classList.remove("menu-open");
-  }
-
-  function scheduleMenuUpdate(open) {
-    scrollIntent = open;
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-    scrollTimeout = setTimeout(() => {
-      if (scrollIntent) {
-        openMenu();
-      } else {
-        closeMenu();
-      }
-      scrollTimeout = null;
-    }, 140);
-  }
-
-  if (toggleMenu) {
-    toggleMenu.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (header.classList.contains("menu-open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-  }
-
-  document.addEventListener("click", function (e) {
-    if (!header.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  window.addEventListener("scroll", function () {
-    const currentY = window.scrollY;
-    if (currentY < lastScrollY - 5) {
-      scheduleMenuUpdate(true);
-    } else if (currentY > lastScrollY + 5) {
-      scheduleMenuUpdate(false);
-    }
-    lastScrollY = currentY;
-  });
-</script>
 
 </body>
 </html>

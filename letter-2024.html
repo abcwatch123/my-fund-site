@@ -176,7 +176,7 @@
 <div class="page">
   <h1>2024</h1>
 
-  <p>The value investors add to this world is making sure that the right people get the right support they need. Let us say we have two people who need one hundred thousand dollars to open a small restaurant. One person, let us call him James, is hardworking. James has spent the last ten years as a trainee chef and is now ready to venture out on his own. James is a good contender to run a restaurant. The second person, let us call him Judas, is a spoiled brat. He has not worked a day in his life. And now, as a last resort, thinks he will take a shot at opening a restaurant. “How hard can it be?”, he asks. Judas is a poor contender to be a restaurateur. Being an investor requires differentiating between the Jameses and Judases of the world. Success is only achieved when the right conclusion is reached. James should get the money for his restaurant and Judas should be rejected. Sounds simple.</p>
+  <p>The value investors add to this world is making sure that the right people get the right support they need. Let us say we have two people who need one hundred thousand dollars to open a small restaurant. One person, let us call him James, is hardworking. James has spent the last ten years as a trainee chef and is now ready to venture out on his own. James is a good contender to run a restaurant. The second person, let us call him Judas, is a spoiled brat. He has not worked a day in his life. And now, as a last resort, thinks he will take a shot at opening a restaurant. 'How hard can it be?', he asks. Judas is a poor contender to be a restaurateur. Being an investor requires differentiating between the Jameses and Judases of the world. Success is only achieved when the right conclusion is reached. James should get the money for his restaurant and Judas should be rejected. Sounds simple.</p>
 
   <p>However, investing requires us to go one step further. Investing only generates a return when the right person is overlooked. It happens a lot. Our universe is upside down sometimes. Sometimes, Judas gets the funding over James. People end up prizing Judas’s restaurant over James’s. Here lies the opportunity. The good investor realises that the right person is not getting the support he deserves. In supporting him when nobody else believes in him, an investor becomes the contrarian, but also the enabler of a positive outcome. In the end, Judas’s restaurant sells terrible food and goes out of business. James’s restaurant, on the other hand, sells delicious and affordable food. He goes on to expand his business with more outlets. The world is now a better place because it has more delicious food. This would not have happened if the good investor had not stood up for James when nobody believed in him.</p>
 
@@ -191,7 +191,6 @@
   <p>I believe this is the only way one can rightly steward the money that is entrusted. To achieve the dual objective of generating a return while adding value to the world.</p>
 
   <p>I remain long on humanity.</p>
-
 </div>
 
 <script>
@@ -216,40 +215,26 @@
       clearTimeout(scrollTimeout);
     }
     scrollTimeout = setTimeout(() => {
-      if (scrollIntent) {
-        openMenu();
-      } else {
-        closeMenu();
-      }
+      if (scrollIntent) openMenu();
+      else closeMenu();
       scrollTimeout = null;
     }, 15);
   }
 
-  if (toggleMenu) {
-    toggleMenu.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (header.classList.contains("menu-open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-  }
+  toggleMenu.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    header.classList.toggle("menu-open");
+  });
 
   document.addEventListener("click", function (e) {
-    if (!header.contains(e.target)) {
-      closeMenu();
-    }
+    if (!header.contains(e.target)) closeMenu();
   });
 
   window.addEventListener("scroll", function () {
     const currentY = window.scrollY;
-    if (currentY < lastScrollY - 5) {
-      scheduleMenuUpdate(true);
-    } else if (currentY > lastScrollY + 5) {
-      scheduleMenuUpdate(false);
-    }
+    if (currentY < lastScrollY - 5) scheduleMenuUpdate(true);
+    else if (currentY > lastScrollY + 5) scheduleMenuUpdate(false);
     lastScrollY = currentY;
   });
 </script>

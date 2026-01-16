@@ -20,16 +20,17 @@
       width: 100%;
       background: #fff;
       z-index: 100;
+      box-sizing: border-box;
     }
 
     .site-header-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* logo left, menu right */
       align-items: center;
+      width: 100%;
       max-width: 800px;
       margin: 0 auto;
       padding: 16px 0;
-      position: relative;
       box-sizing: border-box;
     }
 
@@ -38,23 +39,25 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
       text-decoration: none;
-      color: #999;
+      color: #999999;
     }
 
     .logo-icon {
       width: 22px;
       height: 22px;
+      display: block;
     }
 
     .site-name {
       font-size: 24px;
       font-weight: normal;
-      color: #999;
+      color: #999999;
       user-select: none;
     }
 
-    /* MENU (desktop) */
+    /* MENU */
     .main-nav {
       display: flex;
       gap: 18px;
@@ -63,21 +66,22 @@
     }
 
     .main-nav a {
-      color: #999;
+      color: #999999;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .main-nav a:hover {
-      color: rgba(153,153,153,0);
+      color: rgba(153,153,153,0); /* fade on hover */
     }
 
-    /* HAMBURGER */
+    /* HAMBURGER (mobile) */
     .hamburger {
       display: none;
       flex-direction: column;
       gap: 4px;
       cursor: pointer;
+      z-index: 110;
     }
 
     .hamburger div {
@@ -86,28 +90,31 @@
       background: #999;
     }
 
-    /* PAGE */
+    /* PAGE CONTENT */
     .page {
       max-width: 800px;
-      margin: 90px auto 40px auto;
-      padding: 0 20px;
+      margin: 80px auto 40px auto; /* space for fixed header */
+      text-align: left;
       line-height: 1.7;
-      box-sizing: border-box;
+      padding: 0 20px;
     }
 
     h1 {
       font-weight: normal;
-      color: #999;
+      color: #999999;
       margin-bottom: 6px;
     }
 
     .tagline {
       margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .overview {
       max-width: 600px;
       margin: 20px 0 36px 0;
+      line-height: 1.7;
+      color: #000;
     }
 
     .chart {
@@ -115,65 +122,67 @@
       margin: 30px 0;
     }
 
-    .chart img {
-      width: 100%;
+    a {
+      text-decoration: none;
+    }
+
+    .about-image img {
+      max-width: 100%;
+      height: auto;
       display: block;
+      margin-bottom: 28px;
     }
 
-    /* === MOBILE === */
-    @media (max-width: 600px) {
+    /* Mobile adjustments */
+@media (max-width: 600px) {
+  .site-header-inner {
+    flex-direction: row;
+    justify-content: center; /* center logo */
+    padding: 16px 14px 24px 14px;
+    position: relative;
+  }
 
-      .site-header-inner {
-        padding: 18px 14px 26px 14px; /* bottom breathing room */
-      }
+  .logo-with-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%, -50%);
+  }
 
-      /* Center logo perfectly */
-      .logo-with-text {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
+  .hamburger {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+  }
 
-      /* Center hamburger vertically */
-      .hamburger {
-        display: flex;
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+  .main-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    gap: 24px;
+    font-size: 20px;
+    transition: transform 0.4s ease;
+    transform: translateY(-100%);
+  }
 
-      /* Fullscreen menu */
-      .main-nav {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: #fff;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 24px;
-        font-size: 20px;
-      }
+  .main-nav.show {
+    transform: translateY(0);
+    display: flex;
+  }
 
-      .main-nav.show {
-        display: flex;
-      }
-      
-      .hamburger {
-       z-index: 1001;
-      }
-
-      .main-nav {
-      z-index: 1000;
-      }
-
-      .page {
-        margin: 84px 14px 40px 14px;
-        padding: 0;
-      }
-    }
+  .page {
+    margin: 100px 14px 40px 14px; /* padding for mobile content */
+  }
+}
   </style>
 </head>
 
@@ -181,12 +190,12 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-
     <a href="ffi.html" class="logo-with-text">
       <img src="favicon.png" alt="" class="logo-icon">
       <span class="site-name">fieldsmock</span>
     </a>
 
+    <!-- Hamburger for mobile -->
     <div class="hamburger" id="hamburger">
       <div></div>
       <div></div>
@@ -198,9 +207,9 @@
       <a href="letters.html">letters</a>
       <a href="about.html">about</a>
     </nav>
-
   </div>
 </header>
+
 
 <div class="page">
   <h1>Fieldsmock Fund I</h1>

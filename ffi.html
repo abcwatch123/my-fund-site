@@ -30,6 +30,7 @@
       margin: 0 auto;
       padding: 16px 0;
       position: relative;
+      box-sizing: border-box;
     }
 
     /* LOGO */
@@ -50,6 +51,7 @@
       font-size: 24px;
       font-weight: normal;
       color: #999;
+      user-select: none;
     }
 
     /* MENU (desktop) */
@@ -63,6 +65,7 @@
     .main-nav a {
       color: #999;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     .main-nav a:hover {
@@ -89,11 +92,32 @@
       margin: 90px auto 40px auto;
       padding: 0 20px;
       line-height: 1.7;
+      box-sizing: border-box;
     }
 
     h1 {
       font-weight: normal;
       color: #999;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      margin-bottom: 20px;
+    }
+
+    .overview {
+      max-width: 600px;
+      margin: 20px 0 36px 0;
+    }
+
+    .chart {
+      max-width: 800px;
+      margin: 30px 0;
+    }
+
+    .chart img {
+      width: 100%;
+      display: block;
     }
 
     /* === MOBILE === */
@@ -139,6 +163,7 @@
 
       .page {
         margin: 110px 14px 40px 14px;
+        padding: 0;
       }
     }
   </style>
@@ -150,7 +175,7 @@
   <div class="site-header-inner">
 
     <a href="ffi.html" class="logo-with-text">
-      <img src="favicon.png" class="logo-icon" alt="">
+      <img src="favicon.png" alt="" class="logo-icon">
       <span class="site-name">fieldsmock</span>
     </a>
 
@@ -171,7 +196,30 @@
 
 <div class="page">
   <h1>Fieldsmock Fund I</h1>
-  <p>A small equity-concentrated portfolio, with an intrinsic-value focus.</p>
+
+  <p class="tagline">
+    A small equity-concentrated portfolio, with an intrinsic-value focus.
+  </p>
+
+  <div class="overview">
+    Inception: October 2023<br>
+    Mandate: Long-only equities<br>
+    Approach: Bottom-up valuation<br>
+    Benchmark: S&amp;P 500<br>
+    Reporting: Annual letters; returns shown on a time-weighted basis.
+  </div>
+
+  <div class="chart">
+    <img src="assets/TWR.png" alt="Time-Weighted Return Chart">
+  </div>
+
+  <div class="chart">
+    <img src="assets/CR.png" alt="Cumulative Return Chart">
+  </div>
+
+  <div class="chart">
+    <img src="assets/CAR.png" alt="Compound Annual Return Chart">
+  </div>
 </div>
 
 <script>

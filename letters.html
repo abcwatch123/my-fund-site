@@ -21,11 +21,12 @@
       background: #fff;
       z-index: 100;
       box-sizing: border-box;
+      padding-bottom: 8px; /* small gap below header */
     }
 
     .site-header-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* logo left, menu right */
       align-items: center;
       width: 100%;
       max-width: 800px;
@@ -105,54 +106,36 @@
       margin-bottom: 6px;
     }
 
-    .tagline {
-      margin-bottom: 20px;
-      line-height: 1.6;
+    .holdings-list {
+      font-size: 18px;
+      line-height: 1.8;
     }
 
-    .overview {
-      max-width: 600px;
-      margin: 20px 0 36px 0;
-      line-height: 1.7;
+    .holdings-list a {
       color: #000;
-    }
-
-    .chart {
-      max-width: 800px;
-      margin: 30px 0;
-    }
-
-    /* Make all images stay inside content */
-    .page img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 28px;
-    }
-
-    a {
       text-decoration: none;
     }
 
-    /* === MOBILE ADJUSTMENTS === */
+    .holdings-list a:hover {
+      color: rgba(0,0,0,0); /* fade on hover */
+    }
+
+    /* Mobile adjustments */
     @media (max-width: 600px) {
       .site-header-inner {
         flex-direction: row;
-        justify-content: center;
-        padding: 16px 14px 24px 14px; /* bottom gap added */
+        justify-content: center; /* center logo */
+        padding: 16px 14px 24px 14px;
         position: relative;
-        height: 56px; /* fixed header height */
       }
 
-      /* Center logo */
       .logo-with-text {
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%) translateY(-50%);
       }
 
-      /* Hamburger on right, vertically centered */
       .hamburger {
         position: absolute;
         right: 14px;
@@ -161,7 +144,6 @@
         display: flex;
       }
 
-      /* Mobile nav */
       .main-nav {
         display: none;
         position: fixed;
@@ -185,7 +167,7 @@
       }
 
       .page {
-        margin: 80px 14px 40px 14px; /* content below header */
+        margin: 100px 14px 40px 14px; /* padding for mobile content */
       }
     }
   </style>
@@ -219,68 +201,17 @@
   <h1>Slightly organised thoughts</h1>
 
   <div class="holdings-list">
-    <div><a href="letter-2024.html">2024</a></div>
-    <div><a href="letter-2023.html">2023</a></div>
+    <div><a href="letter-2024.html" target="_blank" rel="noopener noreferrer">2024</a></div>
+    <div><a href="letter-2023.html" target="_blank" rel="noopener noreferrer">2023</a></div>
   </div>
 </div>
 
 <script>
-  const header = document.getElementById("siteHeader");
-  const toggleMenu = document.getElementById("toggleMenu");
+  const hamburger = document.getElementById('hamburger');
+  const mainNav = document.getElementById('mainNav');
 
-  let lastScrollY = window.scrollY;
-  let scrollIntent = null;
-  let scrollTimeout = null;
-
-  function openMenu() {
-    header.classList.add("menu-open");
-  }
-
-  function closeMenu() {
-    header.classList.remove("menu-open");
-  }
-
-  function scheduleMenuUpdate(open) {
-    scrollIntent = open;
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-    scrollTimeout = setTimeout(() => {
-      if (scrollIntent) {
-        openMenu();
-      } else {
-        closeMenu();
-      }
-      scrollTimeout = null;
-    }, 15);
-  }
-
-  if (toggleMenu) {
-    toggleMenu.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (header.classList.contains("menu-open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-  }
-
-  document.addEventListener("click", function (e) {
-    if (!header.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  window.addEventListener("scroll", function () {
-    const currentY = window.scrollY;
-    if (currentY < lastScrollY - 5) {
-      scheduleMenuUpdate(true);
-    } else if (currentY > lastScrollY + 5) {
-      scheduleMenuUpdate(false);
-    }
-    lastScrollY = currentY;
+  hamburger.addEventListener('click', () => {
+    mainNav.classList.toggle('show');
   });
 </script>
 

@@ -9,78 +9,122 @@
   <style>
     body {
       font-family: Baskerville, serif;
-      margin: 40px 20px;
+      margin: 0;
       color: #000;
     }
 
     /* === HEADER === */
     .site-header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      width: 100%;
       background: #fff;
-      margin-bottom: 36px;
-      padding: 16px 0 10px 0;
-      box-sizing: border-box;
+      padding: 16px 0;
       z-index: 100;
-    }
-
-    /* Centered container for logo + menu */
-    .site-header-inner {
-      max-width: 800px;
-      margin: 0 auto;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      justify-content: center; /* centers inner container */
+      box-sizing: border-box;
     }
 
+    .site-header-inner {
+      display: flex;
+      justify-content: space-between; /* logo left, menu right */
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      box-sizing: border-box;
+      padding: 0 20px;
+    }
+
+    /* LOGO */
     .logo-with-text {
       display: flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
       text-decoration: none;
+      margin-left: 0;
       color: #999999;
-      transition: opacity 0.45s ease;
-    }
-
-    .logo-with-text:hover {
-      opacity: 0.3;
     }
 
     .logo-icon {
       width: 22px;
       height: 22px;
+      display: block;
     }
 
     .site-name {
       font-size: 24px;
-      color: #999999;
       font-weight: normal;
+      color: #999999;
       user-select: none;
     }
 
+    /* MENU */
     .main-nav {
       display: flex;
       gap: 18px;
       font-size: 16px;
       text-transform: lowercase;
+      transition: color 0.3s ease;
     }
 
     .main-nav a {
-      text-decoration: none;
       color: #999999;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
 
+    /* Hover: fade text to transparent */
     .main-nav a:hover {
-      text-decoration: underline;
-      color: #000;
+      color: rgba(153,153,153,0);
+    }
+
+    /* HAMBURGER (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 24px;
+      height: 2px;
+      background: #999;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .site-header-inner {
+        padding: 0 14px;
+      }
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        right: 14px;
+        padding: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+      .main-nav.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
     }
 
     /* PAGE CONTENT */
     .page {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 64px auto 40px auto; /* space for fixed header */
       text-align: left;
+      line-height: 1.7;
     }
 
     h1 {
@@ -106,20 +150,8 @@
       margin: 30px 0;
     }
 
-    /* MOBILE */
-    @media (max-width: 600px) {
-      body {
-        margin: 28px 14px;
-      }
-      .site-header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .main-nav {
-        margin-top: 8px;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
@@ -128,14 +160,19 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-    <!-- Logo aligned left within content -->
     <a href="ffi.html" class="logo-with-text">
       <img src="favicon.png" alt="" class="logo-icon">
       <span class="site-name">fieldsmock</span>
     </a>
 
-    <!-- Centered page menu within content -->
-    <nav class="main-nav">
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <nav class="main-nav" id="mainNav">
       <a href="holdings.html">holdings</a>
       <a href="letters.html">letters</a>
       <a href="about.html">about</a>
@@ -168,6 +205,15 @@
     <img src="assets/CAR.png" alt="Compound Annual Return Chart" style="width:100%;">
   </div>
 </div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mainNav = document.getElementById('mainNav');
+
+  hamburger.addEventListener('click', () => {
+    mainNav.classList.toggle('show');
+  });
+</script>
 
 </body>
 </html>

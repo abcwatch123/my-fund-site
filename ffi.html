@@ -19,7 +19,6 @@
       top: 0;
       width: 100%;
       background: #fff;
-      padding: 16px 0;
       z-index: 100;
       box-sizing: border-box;
     }
@@ -30,8 +29,8 @@
       align-items: center;
       width: 100%;
       max-width: 800px;
-      margin: 0 auto; /* center header content with page content */
-      padding: 0 20px;
+      margin: 0 auto;
+      padding: 16px 0;
       box-sizing: border-box;
     }
 
@@ -72,9 +71,8 @@
       transition: color 0.3s ease;
     }
 
-    /* Hover: fade text to transparent */
     .main-nav a:hover {
-      color: rgba(153,153,153,0);
+      color: rgba(153,153,153,0); /* fade on hover */
     }
 
     /* HAMBURGER (mobile) */
@@ -83,6 +81,7 @@
       flex-direction: column;
       gap: 4px;
       cursor: pointer;
+      z-index: 110;
     }
 
     .hamburger div {
@@ -91,44 +90,13 @@
       background: #999;
     }
 
-    /* MOBILE */
-    @media (max-width: 600px) {
-      .site-header-inner {
-        padding: 0 14px;
-      }
-
-      .main-nav {
-        display: none;
-        flex-direction: column;
-        gap: 12px;
-        background: #fff;
-        position: absolute;
-        top: 100%;
-        right: 14px;
-        padding: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      }
-
-      .main-nav.show {
-        display: flex;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .page {
-        margin: 64px 14px 40px 14px; /* keep padding on mobile */
-      }
-    }
-
     /* PAGE CONTENT */
     .page {
       max-width: 800px;
-      margin: 64px auto 40px auto; /* space for fixed header */
+      margin: 80px auto 40px auto; /* space for fixed header */
       text-align: left;
       line-height: 1.7;
-      padding: 0 20px; /* content padding on desktop */
+      padding: 0 20px;
     }
 
     h1 {
@@ -156,6 +124,43 @@
 
     a {
       text-decoration: none;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .site-header-inner {
+        padding: 16px 14px;
+      }
+
+      .main-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        gap: 24px;
+        font-size: 20px;
+        transition: transform 0.4s ease;
+        transform: translateY(-100%);
+      }
+
+      .main-nav.show {
+        transform: translateY(0);
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .page {
+        margin: 100px 14px 40px 14px; /* padding for mobile content */
+      }
     }
   </style>
 </head>

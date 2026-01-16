@@ -232,11 +232,15 @@
 </div>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mainNav = document.getElementById('mainNav');
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
 
-  hamburger.addEventListener('click', () => {
-    mainNav.classList.toggle('show');
+    if(hamburger && mainNav) {
+      hamburger.addEventListener('click', () => {
+        mainNav.classList.toggle('show');
+      });
+    }
   });
 </script>
 

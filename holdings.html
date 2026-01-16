@@ -172,7 +172,18 @@
         transition: transform 0.4s ease;
         transform: translateY(-100%);
       }
+      
+      @media (max-width: 600px) {
+        .main-nav a {
+          color: #999999; /* normal link color */
+      }
 
+        .main-nav a:active,
+        .main-nav a:focus,
+        .main-nav a:hover {
+          color: #000000; /* color when tapped/hovered */
+      }
+      }
       .main-nav.show {
         transform: translateY(0);
         display: flex;
@@ -220,11 +231,15 @@
 </div>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mainNav = document.getElementById('mainNav');
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
 
-  hamburger.addEventListener('click', () => {
-    mainNav.classList.toggle('show');
+    if(hamburger && mainNav) {
+      hamburger.addEventListener('click', () => {
+        mainNav.classList.toggle('show');
+      });
+    }
   });
 </script>
 

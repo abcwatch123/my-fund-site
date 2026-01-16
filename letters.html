@@ -114,7 +114,7 @@
     h1 {
        font-weight: normal;
        color: #999999;
-      margin-bottom: 18px;
+      margin-bottom: px;
       line-height: 1;  /* smaller spacing for multi-line headings */
     }
 
@@ -219,11 +219,15 @@
 </div>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mainNav = document.getElementById('mainNav');
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
 
-  hamburger.addEventListener('click', () => {
-    mainNav.classList.toggle('show');
+    if(hamburger && mainNav) {
+      hamburger.addEventListener('click', () => {
+        mainNav.classList.toggle('show');
+      });
+    }
   });
 </script>
 

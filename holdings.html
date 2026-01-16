@@ -118,22 +118,19 @@
       line-height: 1;  /* smaller spacing for multi-line headings */
     }
 
-.holdings-list a {
-  color: #000;            /* always black */
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent; /* remove tap highlight on mobile */
-}
+.holdings-list {
+      font-size: 18px;
+      line-height: 1.8;
+    }
 
-.holdings-list a:hover {
-  color: rgba(0,0,0,0.7); /* slight fade on hover if desired */
-}
+    .holdings-list a {
+      color: #000;
+      text-decoration: none;
+    }
 
-/* Remove any active/focus color change */
-.holdings-list a:active,
-.holdings-list a:focus {
-  color: #000;
-  outline: none;           /* removes default focus outline on mobile */
-}
+    .holdings-list a:hover {
+      color: rgba(0,0,0,0); /* fade on hover */
+    }
 
     /* Mobile adjustments */
     @media (max-width: 600px) {
@@ -175,18 +172,7 @@
         transition: transform 0.4s ease;
         transform: translateY(-100%);
       }
-      
-        .main-nav a {
-          color: #999999; /* normal link color */
-          transition: color 0.2s ease;
-      }
 
-        .main-nav a:active,
-        .main-nav a:focus,
-        .main-nav a:hover {
-          color: #000000; /* color when tapped/hovered */
-      }
-      
       .main-nav.show {
         transform: translateY(0);
         display: flex;

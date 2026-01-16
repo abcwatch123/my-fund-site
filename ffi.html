@@ -25,7 +25,7 @@
 
     .site-header-inner {
       display: flex;
-      justify-content: space-between; /* logo left, menu right */
+      justify-content: space-between;
       align-items: center;
       width: 100%;
       max-width: 800px;
@@ -122,67 +122,72 @@
       margin: 30px 0;
     }
 
-    a {
-      text-decoration: none;
-    }
-
-    .about-image img {
+    /* Make all images stay inside content */
+    .page img {
       max-width: 100%;
       height: auto;
       display: block;
       margin-bottom: 28px;
     }
 
-    /* Mobile adjustments */
-@media (max-width: 600px) {
-  .site-header-inner {
-    flex-direction: row;
-    justify-content: center; /* center logo */
-    padding: 16px 14px 24px 14px;
-    position: relative;
-  }
+    a {
+      text-decoration: none;
+    }
 
-  .logo-with-text {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%, -50%);
-  }
+    /* === MOBILE ADJUSTMENTS === */
+    @media (max-width: 600px) {
+      .site-header-inner {
+        flex-direction: row;
+        justify-content: center;
+        padding: 16px 14px 24px 14px; /* bottom gap added */
+        position: relative;
+        height: 56px; /* fixed header height */
+      }
 
-  .hamburger {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-  }
+      /* Center logo */
+      .logo-with-text {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
 
-  .main-nav {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    gap: 24px;
-    font-size: 20px;
-    transition: transform 0.4s ease;
-    transform: translateY(-100%);
-  }
+      /* Hamburger on right, vertically centered */
+      .hamburger {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+      }
 
-  .main-nav.show {
-    transform: translateY(0);
-    display: flex;
-  }
+      /* Mobile nav */
+      .main-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        gap: 24px;
+        font-size: 20px;
+        transition: transform 0.4s ease;
+        transform: translateY(-100%);
+      }
 
-  .page {
-    margin: 100px 14px 40px 14px; /* padding for mobile content */
-  }
-}
+      .main-nav.show {
+        transform: translateY(0);
+        display: flex;
+      }
+
+      .page {
+        margin: 80px 14px 40px 14px; /* content below header */
+      }
+    }
   </style>
 </head>
 
@@ -210,13 +215,9 @@
   </div>
 </header>
 
-
 <div class="page">
   <h1>Fieldsmock Fund I</h1>
-
-  <p class="tagline">
-    A small equity-concentrated portfolio, with an intrinsic-value focus.
-  </p>
+  <p class="tagline">A small equity-concentrated portfolio, with an intrinsic-value focus.</p>
 
   <div class="overview">
     Inception: October 2023<br>
@@ -226,6 +227,7 @@
     Reporting: Annual letters; returns shown on a time-weighted basis.
   </div>
 
+  <!-- Charts -->
   <div class="chart">
     <img src="assets/TWR.png" alt="Time-Weighted Return Chart">
   </div>

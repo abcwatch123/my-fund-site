@@ -21,11 +21,12 @@
       background: #fff;
       z-index: 100;
       box-sizing: border-box;
+      padding-bottom: 8px; /* small gap below header */
     }
 
     .site-header-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* logo left, menu right */
       align-items: center;
       width: 100%;
       max-width: 800px;
@@ -100,59 +101,42 @@
     }
 
     h1 {
-      font-weight: normal;
-      color: #999999;
+       font-weight: normal;
+       color: #999999;
       margin-bottom: 6px;
+      line-height: 1;  /* smaller spacing for multi-line headings */
     }
 
-    .tagline {
-      margin-bottom: 20px;
-      line-height: 1.6;
+    .holdings-list {
+      font-size: 18px;
+      line-height: 1.8;
     }
 
-    .overview {
-      max-width: 600px;
-      margin: 20px 0 36px 0;
-      line-height: 1.7;
+    .holdings-list a {
       color: #000;
-    }
-
-    .chart {
-      max-width: 800px;
-      margin: 30px 0;
-    }
-
-    /* Make all images stay inside content */
-    .page img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 28px;
-    }
-
-    a {
       text-decoration: none;
     }
 
-    /* === MOBILE ADJUSTMENTS === */
+    .holdings-list a:hover {
+      color: rgba(0,0,0,0); /* fade on hover */
+    }
+
+    /* Mobile adjustments */
     @media (max-width: 600px) {
       .site-header-inner {
         flex-direction: row;
-        justify-content: center;
-        padding: 16px 14px 24px 14px; /* bottom gap added */
+        justify-content: center; /* center logo */
+        padding: 16px 14px 24px 14px;
         position: relative;
-        height: 56px; /* fixed header height */
       }
 
-      /* Center logo */
       .logo-with-text {
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%) translateY(-50%);
       }
 
-      /* Hamburger on right, vertically centered */
       .hamburger {
         position: absolute;
         right: 14px;
@@ -161,7 +145,6 @@
         display: flex;
       }
 
-      /* Mobile nav */
       .main-nav {
         display: none;
         position: fixed;
@@ -185,7 +168,7 @@
       }
 
       .page {
-        margin: 80px 14px 40px 14px; /* content below header */
+        margin: 80px 14px 40px 14px; /* padding for mobile content */
       }
     }
   </style>

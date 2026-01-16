@@ -99,6 +99,17 @@
       line-height: 1.7;
       padding: 0 20px;
     }
+    
+    .overview {
+      margin-bottom: 40px;  /* creates a gap before the first chart */
+    }
+    
+    .page img {
+  max-width: 100%;   /* prevents image from being wider than its container */
+  height: auto;      /* maintain aspect ratio */
+  display: block;
+  margin-bottom: 28px; /* spacing below image */
+    }
 
     h1 {
        font-weight: normal;
@@ -221,62 +232,11 @@
 </div>
 
 <script>
-  const header = document.getElementById("siteHeader");
-  const toggleMenu = document.getElementById("toggleMenu");
+  const hamburger = document.getElementById('hamburger');
+  const mainNav = document.getElementById('mainNav');
 
-  let lastScrollY = window.scrollY;
-  let scrollIntent = null;
-  let scrollTimeout = null;
-
-  function openMenu() {
-    header.classList.add("menu-open");
-  }
-
-  function closeMenu() {
-    header.classList.remove("menu-open");
-  }
-
-  function scheduleMenuUpdate(open) {
-    scrollIntent = open;
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-    scrollTimeout = setTimeout(() => {
-      if (scrollIntent) {
-        openMenu();
-      } else {
-        closeMenu();
-      }
-      scrollTimeout = null;
-    }, 15);
-  }
-
-  if (toggleMenu) {
-    toggleMenu.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (header.classList.contains("menu-open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-  }
-
-  document.addEventListener("click", function (e) {
-    if (!header.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  window.addEventListener("scroll", function () {
-    const currentY = window.scrollY;
-    if (currentY < lastScrollY - 5) {
-      scheduleMenuUpdate(true);
-    } else if (currentY > lastScrollY + 5) {
-      scheduleMenuUpdate(false);
-    }
-    lastScrollY = currentY;
+  hamburger.addEventListener('click', () => {
+    mainNav.classList.toggle('show');
   });
 </script>
 

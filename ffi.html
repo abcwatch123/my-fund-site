@@ -21,8 +21,6 @@
       background: #fff;
       padding: 16px 0;
       z-index: 100;
-      display: flex;
-      justify-content: center; /* centers inner container */
       box-sizing: border-box;
     }
 
@@ -32,8 +30,9 @@
       align-items: center;
       width: 100%;
       max-width: 800px;
-      box-sizing: border-box;
+      margin: 0 auto; /* center header content with page content */
       padding: 0 20px;
+      box-sizing: border-box;
     }
 
     /* LOGO */
@@ -43,7 +42,6 @@
       gap: 8px;
       cursor: pointer;
       text-decoration: none;
-      margin-left: 0;
       color: #999999;
     }
 
@@ -66,7 +64,6 @@
       gap: 18px;
       font-size: 16px;
       text-transform: lowercase;
-      transition: color 0.3s ease;
     }
 
     .main-nav a {
@@ -99,6 +96,7 @@
       .site-header-inner {
         padding: 0 14px;
       }
+
       .main-nav {
         display: none;
         flex-direction: column;
@@ -110,12 +108,17 @@
         padding: 12px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       }
+
       .main-nav.show {
         display: flex;
       }
 
       .hamburger {
         display: flex;
+      }
+
+      .page {
+        margin: 64px 14px 40px 14px; /* keep padding on mobile */
       }
     }
 
@@ -125,6 +128,7 @@
       margin: 64px auto 40px auto; /* space for fixed header */
       text-align: left;
       line-height: 1.7;
+      padding: 0 20px; /* content padding on desktop */
     }
 
     h1 {

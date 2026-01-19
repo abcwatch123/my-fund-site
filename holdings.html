@@ -124,24 +124,33 @@
     }
 
     .holdings-list a {
-       color: #000;
-        text-decoration: none;
-        -webkit-tap-highlight-color: transparent;
-    }
+      color: #000;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent; /* remove iOS tap flash */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: color 0.3s ease;
+}
 
-/* Desktop ONLY hover effect */
+/* Desktop hover effect */
 @media (hover: hover) and (pointer: fine) {
     .holdings-list a:hover {
-        color: rgba(0,0,0,0); /* transparent on hover */
-      }
-    }
+      color: rgba(0,0,0,0); /* transparent on hover */
+  }
+}
 
-/* Mobile: prevent color changes */
+/* Force color on mobile tap/focus */
     .holdings-list a:active,
     .holdings-list a:focus {
-        color: #000;
-        outline: none;
+      color: #000 !important;
+      background: none;
+      outline: none;
 }
+
+        
+
 
     /* Mobile adjustments */
     @media (max-width: 600px) {

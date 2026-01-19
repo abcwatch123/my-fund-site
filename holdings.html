@@ -124,13 +124,24 @@
     }
 
     .holdings-list a {
-      color: #000;
-      text-decoration: none;
+       color: #000;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
+/* Desktop ONLY hover effect */
+@media (hover: hover) and (pointer: fine) {
     .holdings-list a:hover {
-      color: rgba(0,0,0,0); /* fade on hover */
+        color: rgba(0,0,0,0); /* transparent on hover */
+      }
     }
+
+/* Mobile: prevent color changes */
+    .holdings-list a:active,
+    .holdings-list a:focus {
+        color: #000;
+        outline: none;
+}
 
     /* Mobile adjustments */
     @media (max-width: 600px) {

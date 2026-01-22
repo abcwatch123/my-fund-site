@@ -123,20 +123,21 @@
       line-height: 1.8;
     }
 
-    .holdings-list a {
+    .page a {
       color: #000;
       text-decoration: none;
       transition: color 0.3s ease;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.2); /* subtle gray highlight on tap */
     }
 
-    .holdings-list a:hover {
+    .page a:hover {
       color: rgba(153,153,153,0); /* fade on hover */
     }
 
     @media (hover: none) {
-      .holdings-list a:hover,
-      .holdings-list a:active,
-      .holdings-list a:focus {
+      .page a:hover,
+      .page a:active,
+      .page a:focus {
         color: #000;
       }
     }

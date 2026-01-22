@@ -123,22 +123,78 @@
       line-height: 1.8;
     }
 
-    .holdings-list a {
+    .page a {
       color: #000;
       text-decoration: none;
       transition: color 0.3s ease;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.2); /* subtle gray highlight on tap */
     }
 
-    .holdings-list a:hover {
+    .page a:hover {
       color: rgba(153,153,153,0); /* fade on hover */
     }
 
     @media (hover: none) {
-      .holdings-list a:hover,
-      .holdings-list a:active,
-      .holdings-list a:focus {
+      .page a:hover,
+      .page a:active,
+      .page a:focus {
         color: #000;
       }
+    }
+
+    .chart {
+      margin-bottom: 28px;
+    }
+
+    :root {
+      --ffi-line: #9fbfa9;
+      --spx-line: #b5b5b5;
+      --grid-line: rgba(0,0,0,0.08);
+    }
+
+    .chart-title {
+      font-size: 16px;
+      color: #999999;
+      margin: 0 0 8px 0;
+      font-weight: normal;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: #999999;
+      margin: 0 0 8px 0;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 2px;
+      display: inline-block;
+      background: var(--ffi-line);
+    }
+
+    .legend-dot.spx {
+      background: var(--spx-line);
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .chart-line {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.5;
     }
 
     /* Mobile adjustments */
@@ -233,15 +289,63 @@
 
   <!-- Charts -->
   <div class="chart">
-    <img src="assets/TWR.png" alt="Time-Weighted Return Chart">
+    <h2 class="chart-title">Time-Weighted Return</h2>
+    <div class="chart-legend">
+      <span class="legend-item"><span class="legend-dot"></span>FFI</span>
+      <span class="legend-item"><span class="legend-dot spx"></span>S&amp;P 500</span>
+    </div>
+    <svg class="chart-svg" viewBox="0 0 300 120" role="img" aria-label="Time-Weighted Return chart">
+      <line x1="20" y1="20" x2="280" y2="20" stroke="var(--grid-line)" stroke-width="1"></line>
+      <line x1="20" y1="60" x2="280" y2="60" stroke="var(--grid-line)" stroke-width="1"></line>
+      <line x1="20" y1="100" x2="280" y2="100" stroke="var(--grid-line)" stroke-width="1"></line>
+
+      <path class="chart-line" stroke="var(--ffi-line)" d="M20 100 C85 67.4 115 45.2 150 34.81 S215 27.41 280 20"></path>
+      <path class="chart-line" stroke="var(--spx-line)" d="M20 72.33 C85 67.48 115 62.62 150 62.62 S215 65.83 280 69.04"></path>
+
+      <text x="20" y="114" font-size="10" text-anchor="middle" fill="#999999">2023</text>
+      <text x="150" y="114" font-size="10" text-anchor="middle" fill="#999999">2024</text>
+      <text x="280" y="114" font-size="10" text-anchor="middle" fill="#999999">2025 YTD</text>
+    </svg>
   </div>
 
   <div class="chart">
-    <img src="assets/CR.png" alt="Cumulative Return Chart">
+    <h2 class="chart-title">Cumulative Return</h2>
+    <div class="chart-legend">
+      <span class="legend-item"><span class="legend-dot"></span>FFI</span>
+      <span class="legend-item"><span class="legend-dot spx"></span>S&amp;P 500</span>
+    </div>
+    <svg class="chart-svg" viewBox="0 0 300 120" role="img" aria-label="Cumulative Return chart">
+      <line x1="20" y1="20" x2="280" y2="20" stroke="var(--grid-line)" stroke-width="1"></line>
+      <line x1="20" y1="60" x2="280" y2="60" stroke="var(--grid-line)" stroke-width="1"></line>
+      <line x1="20" y1="100" x2="280" y2="100" stroke="var(--grid-line)" stroke-width="1"></line>
+
+      <path class="chart-line" stroke="var(--ffi-line)" d="M20 100 C85 86.84 115 80.26 150 73.68 S215 46.84 280 20"></path>
+      <path class="chart-line" stroke="var(--spx-line)" d="M20 80.9 C85 73.17 115 69.3 150 65.44 S215 58.97 280 52.49"></path>
+
+      <text x="20" y="114" font-size="10" text-anchor="middle" fill="#999999">2023</text>
+      <text x="150" y="114" font-size="10" text-anchor="middle" fill="#999999">2024</text>
+      <text x="280" y="114" font-size="10" text-anchor="middle" fill="#999999">2025 YTD</text>
+    </svg>
   </div>
 
   <div class="chart">
-    <img src="assets/CAR.png" alt="Compound Annual Return Chart">
+    <h2 class="chart-title">Compound Annual Return</h2>
+    <div class="chart-legend">
+      <span class="legend-item"><span class="legend-dot"></span>FFI</span>
+      <span class="legend-item"><span class="legend-dot spx"></span>S&amp;P 500</span>
+    </div>
+    <svg class="chart-svg" viewBox="0 0 300 120" role="img" aria-label="Compound Annual Return chart">
+      <line x1="20" y1="20" x2="280" y2="20" stroke="var(--grid-line)" stroke-width="1"></line>
+      <line x1="20" y1="60" x2="280" y2="60" stroke="var(--grid-line)" stroke-width="1"></line>
+      <line x1="20" y1="100" x2="280" y2="100" stroke="var(--grid-line)" stroke-width="1"></line>
+
+      <path class="chart-line" stroke="var(--ffi-line)" d="M20 100 C85 74.28 115 61.42 150 48.56 S215 34.28 280 20"></path>
+      <path class="chart-line" stroke="var(--spx-line)" d="M20 47.65 C85 43.17 115 40.93 150 38.69 S215 39.15 280 39.6"></path>
+
+      <text x="20" y="114" font-size="10" text-anchor="middle" fill="#999999">2023</text>
+      <text x="150" y="114" font-size="10" text-anchor="middle" fill="#999999">2024</text>
+      <text x="280" y="114" font-size="10" text-anchor="middle" fill="#999999">2025 YTD</text>
+    </svg>
   </div>
 </div>
 

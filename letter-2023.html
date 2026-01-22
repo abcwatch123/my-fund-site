@@ -123,22 +123,50 @@
       line-height: 1.8;
     }
 
-    .holdings-list a {
+    .page a {
       color: #000;
       text-decoration: none;
       transition: color 0.3s ease;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.2); /* subtle gray highlight on tap */
     }
 
-    .holdings-list a:hover {
+    .page a:hover {
       color: rgba(153,153,153,0); /* fade on hover */
     }
 
     @media (hover: none) {
-      .holdings-list a:hover,
-      .holdings-list a:active,
-      .holdings-list a:focus {
+      .page a:hover,
+      .page a:active,
+      .page a:focus {
         color: #000;
       }
+    }
+
+    .perf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px 0;
+      font-size: 16px;
+    }
+
+    .perf-table th,
+    .perf-table td {
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .perf-table th {
+      color: #999999;
+      font-weight: normal;
+    }
+
+    .perf-title {
+      font-size: 16px;
+      color: #000;
+      margin: 14px 0 6px 0;
+      font-weight: normal;
+      text-transform: none;
     }
 
     /* Mobile adjustments */
@@ -220,6 +248,24 @@
 
 <div class="page">
   <h1>2023</h1>
+
+  <h2 class="perf-title">Annual Performance vs. S&amp;P 500</h2>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>S&amp;P 500</th>
+        <th>FFI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2023</td>
+        <td>11.99%</td>
+        <td>-20.27%</td>
+      </tr>
+    </tbody>
+  </table>
 
   <p>The only honest way to begin this letter is to say that the past twenty four months have been difficult. Every fund goes through good times and bad. What is important is to learn from the mistakes and keep moving forward.</p>
 

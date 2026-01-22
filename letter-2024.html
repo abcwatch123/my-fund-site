@@ -123,22 +123,50 @@
       line-height: 1.8;
     }
 
-    .holdings-list a {
+    .page a {
       color: #000;
       text-decoration: none;
       transition: color 0.3s ease;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.2); /* subtle gray highlight on tap */
     }
 
-    .holdings-list a:hover {
+    .page a:hover {
       color: rgba(153,153,153,0); /* fade on hover */
     }
 
     @media (hover: none) {
-      .holdings-list a:hover,
-      .holdings-list a:active,
-      .holdings-list a:focus {
+      .page a:hover,
+      .page a:active,
+      .page a:focus {
         color: #000;
       }
+    }
+
+    .perf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px 0;
+      font-size: 16px;
+    }
+
+    .perf-table th,
+    .perf-table td {
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .perf-table th {
+      color: #999999;
+      font-weight: normal;
+    }
+
+    .perf-title {
+      font-size: 16px;
+      color: #000;
+      margin: 14px 0 6px 0;
+      font-weight: normal;
+      text-transform: none;
     }
 
     /* Mobile adjustments */
@@ -221,7 +249,25 @@
 <div class="page">
   <h1>2024</h1>
 
-  <p>The value investors add to this world is making sure that the right people get the right support they need. Let us say we have two people who need one hundred thousand dollars to open a small restaurant. One person, let us call him James, is hardworking. James has spent the last ten years as a trainee chef and is now ready to venture out on his own. James is a good contender to run a restaurant. The second person, let us call him Judas, is a spoiled brat. He has not worked a day in his life. And now, as a last resort, thinks he will take a shot at opening a restaurant. 'How hard can it be?', he asks. Judas is a poor contender to be a restaurateur. Being an investor requires differentiating between the Jameses and Judases of the world. Success is only achieved when the right conclusion is reached. James should get the money for his restaurant and Judas should be rejected. Sounds simple.</p>
+  <h2 class="perf-title">Annual Performance vs. S&amp;P 500</h2>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>S&amp;P 500</th>
+        <th>FFI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2024</td>
+        <td>23.31%</td>
+        <td>55.74%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The value that investors add to this world is making sure that the right people get the right support they need. Let us say we have two people who need one hundred thousand dollars to open a small restaurant. One person, let us call him James, is hardworking. James has spent the last ten years as a trainee chef and is now ready to venture out on his own. James is a good contender to run a restaurant. The second person, let us call him Judas, is a spoiled brat. He has not worked a day in his life. And now, as a last resort, thinks he will take a shot at opening a restaurant. 'How hard can it be?', he asks. Judas is a poor contender to be a restaurateur. Being an investor requires differentiating between the Jameses and Judases of the world. Success is only achieved when the right conclusion is reached. James should get the money for his restaurant and Judas should be rejected. Sounds simple.</p>
 
   <p>However, investing requires us to go one step further. Investing only generates a return when the right person is overlooked. It happens a lot. Our universe is upside down sometimes. Sometimes, Judas gets the funding over James. People end up prizing Judas’s restaurant over James’s. Here lies the opportunity. The good investor realises that the right person is not getting the support he deserves. In supporting him when nobody else believes in him, an investor becomes the contrarian, but also the enabler of a positive outcome. In the end, Judas’s restaurant sells terrible food and goes out of business. James’s restaurant, on the other hand, sells delicious and affordable food. He goes on to expand his business with more outlets. The world is now a better place because it has more delicious food. This would not have happened if the good investor had not stood up for James when nobody believed in him.</p>
 

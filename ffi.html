@@ -146,8 +146,18 @@
       margin-bottom: 28px;
     }
 
+    .chart svg,
     .chart img {
       transform: translateX(clamp(-24px, -3vw, -10px));
+    }
+
+    @media (max-width: 600px) {
+      .chart svg,
+      .chart img {
+        transform: none;
+        width: 100%;
+        height: auto;
+      }
     }
 
     /* Mobile adjustments */

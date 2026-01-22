@@ -126,25 +126,13 @@
     .holdings-list a {
   color: #000; 
   text-decoration: none;
+  transition: color 0.3s ease;
   -webkit-tap-highlight-color: rgba(0,0,0,0.2); /* subtle gray highlight on tap */
 }
 
-/* Desktop hover effect */
-@media (hover: hover) and (pointer: fine) {
-  .holdings-list a:hover {
-    color: rgba(153,153,153,0); /* fade on desktop hover only */
-  }
-}
-
-/* Mobile tap / focus stays black */
-@media (hover: none) {
-  .holdings-list a:active,
-  .holdings-list a:focus {
-    color: #000; 
-    outline: none;
-    /* subtle tap feedback already handled by -webkit-tap-highlight-color */
-  }
-}
+    .holdings-list a:hover {
+      color: rgba(153,153,153,0); /* fade on hover */
+    }
 
     /* Mobile adjustments */
     @media (max-width: 600px) {

@@ -13,6 +13,11 @@
       color: #000;
     }
 
+    :root {
+      --content-font-size-desktop: 20px;
+      --content-font-size-mobile: 18px;
+    }
+
     /* === HEADER === */
     .site-header {
       position: fixed;
@@ -98,6 +103,7 @@
       text-align: left;
       line-height: 1.7;
       padding: 0 20px;
+      font-size: var(--content-font-size-desktop);
     }
     
     .overview {
@@ -119,7 +125,7 @@
     }
 
     .holdings-list {
-      font-size: 18px;
+      font-size: 1em;
       line-height: 1.8;
     }
 
@@ -190,6 +196,7 @@
 
       .page {
         margin: 80px 14px 40px 14px; /* padding for mobile content */
+        font-size: var(--content-font-size-mobile);
       }
     }
   </style>

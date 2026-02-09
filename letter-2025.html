@@ -120,8 +120,34 @@
     h1 {
        font-weight: normal;
        color: #999999;
-      margin-bottom: 18px;
+      margin: 0;
       line-height: 1;  /* smaller spacing for multi-line headings */
+    }
+
+    .letter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .lang-toggle {
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      color: #b3b3b3;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .lang-toggle a {
+      color: #b3b3b3;
+      text-decoration: none;
+    }
+
+    .lang-toggle .active {
+      color: #999999;
+      cursor: default;
     }
 
     .holdings-list {
@@ -258,7 +284,13 @@
 </header>
 
 <div class="page">
-  <h1>2025</h1>
+  <div class="letter-header">
+    <h1>2025</h1>
+    <div class="lang-toggle" aria-label="Language toggle">
+      <span class="active">EN</span>
+      <a href="letter-2025-de.html">DE</a>
+    </div>
+  </div>
 
   <h2 class="perf-title">Annual Performance vs. S&amp;P 500</h2>
   <table class="perf-table">

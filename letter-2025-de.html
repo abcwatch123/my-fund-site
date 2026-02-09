@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>fieldsmock</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Baskerville, serif;
+      margin: 0;
+      color: #000;
+    }
+
+    :root {
+      --content-font-size-desktop: 18px;
+      --content-font-size-mobile: 16px;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      z-index: 100;
+      box-sizing: border-box;
+      padding-bottom: 8px; /* small gap below header */
+    }
+
+    .site-header-inner {
+      display: flex;
+      justify-content: space-between; /* logo left, menu right */
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 0;
+      box-sizing: border-box;
+    }
+
+    /* LOGO */
+    .logo-with-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #999999;
+    }
+
+    .logo-icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .site-name {
+      font-size: 24px;
+      font-weight: normal;
+      color: #999999;
+      user-select: none;
+    }
+
+    /* MENU */
+    .main-nav {
+      display: flex;
+      gap: 18px;
+      font-size: 16px;
+      text-transform: lowercase;
+    }
+
+    .main-nav a {
+      color: #999999;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover {
+      color: rgba(153,153,153,0); /* fade on hover */
+    }
+
+    /* HAMBURGER (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      z-index: 110;
+    }
+
+    .hamburger div {
+      width: 24px;
+      height: 2px;
+      background: #999;
+    }
+
+    /* PAGE CONTENT */
+    .page {
+      max-width: 800px;
+      margin: 80px auto 40px auto; /* space for fixed header */
+      text-align: left;
+      line-height: 1.7;
+      padding: 0 20px;
+      font-size: var(--content-font-size-desktop);
+    }
+    
+    .overview {
+      margin-bottom: 40px;  /* creates a gap before the first chart */
+    }
+    
+    .page img {
+  max-width: 100%;   /* prevents image from being wider than its container */
+  height: auto;      /* maintain aspect ratio */
+  display: block;
+  margin-bottom: 28px; /* spacing below image */
+    }
+
+    h1 {
+       font-weight: normal;
+       color: #999999;
+      margin: 0;
+      line-height: 1;  /* smaller spacing for multi-line headings */
+    }
+
+    .letter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .lang-toggle {
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      color: #b3b3b3;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .lang-toggle a {
+      color: #b3b3b3;
+      text-decoration: none;
+    }
+
+    .lang-toggle .active {
+      color: #999999;
+      cursor: default;
+    }
+
+    .holdings-list {
+      font-size: 1em;
+      line-height: 1.8;
+    }
+
+    .page a {
+      color: #000;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.2); /* subtle gray highlight on tap */
+    }
+
+    .page a:hover {
+      color: rgba(153,153,153,0); /* fade on hover */
+    }
+
+    @media (hover: none) {
+      .page a:hover,
+      .page a:active,
+      .page a:focus {
+        color: #000;
+      }
+    }
+
+    .perf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px 0;
+      font-size: 0.9em;
+    }
+
+    .perf-table th,
+    .perf-table td {
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .perf-table th {
+      color: #999999;
+      font-weight: normal;
+    }
+
+    .perf-table td {
+      color: #999999;
+    }
+
+    .perf-title {
+      font-size: 1em;
+      color: #000;
+      margin: 14px 0 6px 0;
+      font-weight: normal;
+      text-transform: none;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .site-header-inner {
+        flex-direction: row;
+        justify-content: center; /* center logo */
+        padding: 16px 14px 24px 14px;
+        position: relative;
+      }
+
+      .logo-with-text {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      .hamburger {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+      }
+
+      .main-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        gap: 24px;
+        font-size: 20px;
+        transition: transform 0.4s ease;
+        transform: translateY(-100%);
+      }
+
+      .main-nav.show {
+        transform: translateY(0);
+        display: flex;
+      }
+
+      .page {
+        margin: 80px 8px 40px 8px; /* padding for mobile content */
+        font-size: var(--content-font-size-mobile);
+        padding: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="ffi.html" class="logo-with-text">
+      <img src="favicon.png" alt="" class="logo-icon">
+      <span class="site-name">fieldsmock</span>
+    </a>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="letters.html">letters</a>
+      <a href="about.html">about</a>
+    </nav>
+  </div>
+</header>
+
+  <div class="page">
+  <div class="letter-header">
+    <h1>2025</h1>
+    <div class="lang-toggle" aria-label="Language toggle">
+      <a href="letter-2025.html">EN</a>
+      <span class="active">DE</span>
+    </div>
+  </div>
+
+  <h2 class="perf-title">Jahresrendite vs. S&amp;P 500</h2>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>FFI</th>
+        <th>S&amp;P 500</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2025</td>
+        <td>49.08%</td>
+        <td>16.39%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Die guten Resultate, die wir letztes Jahr erzielt haben, verdecken, wie schwierig das Jahr tatsächlich war. Es war ein Strudel aus Selbstzweifeln, Schmerz, Druck und Angst. Ich habe mehr Fehler gemacht, als mir lieb war, und viele wichtige Lektionen gelernt.</p>
+
+  <p>Meine Familie ist 2025 nach Zürich gezogen. Seitdem werde ich oft gefragt, was ich beruflich mache. Es fällt mir nicht leicht, das zu erklären. Ich bin kein Daytrader. Im Schnitt mache ich vielleicht drei Transaktionen im Jahr. Ich investiere nicht in Krypto – das ist ein Sammelobjekt, genau wie Gold oder Kunst. Sammelobjekte kann man nicht bewerten, man kann sie nur bepreisen. Ich investiere stattdessen in Vermögenswerte, konkret in Aktien. Aktien generieren Cashflows, und Cashflows kann man bewerten. Und wenn wir schon dabei sind: Die anderen beiden Anlageklassen wären Rohstoffe (Dinge, die verbraucht werden) und Währungen (Dinge, die lediglich als Tauschmittel dienen). Beides fasse ich nicht an.</p>
+
+  <p>Meine jüngste Art zu beschreiben, was ich tue, lautet: „Ich unterstütze Menschen und Unternehmen, die übersehen werden.“</p>
+
+  <p>Ich unterstütze sie finanziell, indem ich ihre Aktien kaufe. Oft werde ich gefragt: Wie unterstützt der Kauf von Aktien am Sekundärmarkt eigentlich die Menschen im Unternehmen? Zahlt man damit nicht einfach den vorherigen Eigentümer aus? Nun, viele Unternehmen vergüten ihre Mitarbeitenden mit Aktienoptionen. Ob diese Option 10 oder 20 Dollar wert ist, macht einen erheblichen Unterschied für das, was jemand für seine Arbeit erhält. Zudem stützt der Sekundärmarkt den Primärmarkt – also jenen Markt, über den ein Unternehmen direkt Kapital aufnehmen würde, wenn es das möchte.</p>
+
+  <p>Diese Unternehmen werden übersehen, obwohl sie Unterstützung verdienen – und dennoch nicht erkannt, nicht geschätzt, unterbewertet sind. Manchmal fragen wir uns, warum die Rendite einer guten Investition so hoch ist. Sie ist nur so hoch wie ihre Wirkung. Und die Wirkung ist deshalb groß, weil man da ist, wenn es am nötigsten ist. Übertragen wir es ins Persönliche: Welchen Freund schätzen wir mehr? Den, der da war, als es uns gut ging? Als wir auf dem Höhepunkt waren und ohnehin jeder mit uns Zeit verbringen wollte? Oder den, der zu uns stand, als wir am Tiefpunkt waren? Als niemand mehr an uns glaubte und andere Abstand hielten? Natürlich ist es der Freund, der bleibt, wenn alle anderen gehen – der an dich glaubt und dein Potenzial sieht, trotz allem, was andere sagen. Das ist der, der den Unterschied macht.</p>
+
+  <p>Als Trump am 5. April seine Zölle ankündigte, hatte ich Glück. Ich liquidierte rechtzeitig alle Positionen und hielt beinahe schadenfroh Cash, während der Markt einbrach. „Das ist meine Chance, die Volatilität auszunutzen, den Dip zu kaufen“, dachte ich. Was ich nicht wusste: Diese Denkweise würde sich als Fluch erweisen, den ich mir mühsam wieder austreiben musste.</p>
+
+  <p>Als die Volatilität in den folgenden Wochen anhielt, ertappte ich mich immer wieder bei dem Gedanken, ich könne den Markt timen. Ich hätte plötzlich eine hellseherische Fähigkeit entdeckt, genau vor einem Crash zu verkaufen oder kurz vor einem Anstieg zu kaufen. Du Idiot. Das führte zu einigen der dümmsten Fehler, die ich je beim Investieren gemacht habe.</p>
+
+  <p>Ich kaufte Reddit, als die Aktie im April auf rund 100 Dollar fiel. Auf diesem Niveau war die These einfach: Könnte Reddit in zehn Jahren vielleicht 10 % so groß sein wie Meta heute? Als widerwillig intensiver Reddit-Nutzer schien mir das nicht abwegig. Also stieg ich ein – bei etwa 100 Dollar. Doch dann fiel der Kurs weiter. 98, 96, 94. Und wieder meldete sich meine vermeintliche Vorahnung. Ich hatte dieses Gefühl, dass ein weiterer Crash bevorstand. Genau wie am 5. April – das wäre meine Chance, alles zu verkaufen und noch günstiger wieder einzusteigen. Also tat ich es. Ich verkaufte meine Position und wartete auf den Einbruch. Er kam nie. Heute kostet eine Aktie von Reddit, Inc. 210 Dollar.</p>
+
+  <p>Rückblickend bin ich dankbar, dass ich diese Lektion in Monaten und nicht in Jahren gelernt habe. Viele Investoren verpassen Renditen, weil sie auf den nächsten Crash warten. Den Markt einmal richtig zu timen, ist schlimmer, als ihn nie richtig zu timen.</p>
+
+  <p>Ich habe gelernt, dass ich nur eines weiß: unterbewertete Unternehmen kaufen und halten. Ich bin kein Trader. Nicht das Timing entscheidet, sondern die Zeit im Markt. Heute ist Steve Ballmers Vermögen um 50 % höher als das von Bill Gates. Warum? Weil er seine Microsoft-Beteiligung nie verkauft hat. Er hält rund 4 % an Microsoft, während Bill Gates nach zahlreichen Verkäufen nur noch etwa 1 % hält. Wie Charlie Munger sagte: „Das große Geld liegt nicht im Kaufen oder Verkaufen, sondern im Warten.“</p>
+
+  <p>Darum ist das wichtigste Organ beim Investieren der Magen, nicht das Gehirn. Ich habe viele Freunde, die ich für klüger halte als mich. Sie waren in der Schule besser, haben begehrte Berufe in Medizin, Jura oder Banking ergriffen und leisten ihren Beitrag für die Gesellschaft. Und doch befinde ich mich heute in der ungewöhnlichen und privilegierten Lage, meinen Lebensunterhalt damit zu verdienen, Menschen und Unternehmen zu unterstützen, die übersehen werden.</p>
+
+  <p>Letztes Jahr habe ich einen erheblichen Teil meines Portfolios in Intel allokiert, zu etwa 20 Dollar pro Aktie. Anders als bei früheren Investments sprach ich diesmal offen darüber. Wenn man mich fragte, welche Unternehmen ich interessant finde, sagte ich: Intel. Meine größte Position? Intel. Dieses kleine Experiment zeigte mir, wie das „Magen-Prinzip“ auch negativ wirken kann. Die meisten, denen ich Intel empfahl, hatten nicht die Überzeugung zu kaufen. Und diejenigen, die kauften, hatten nicht den Magen zu halten.</p>
+
+  <p>Den Großteil des Jahres pendelte die Aktie zwischen 19 und 24 Dollar. Trotz klarer Unterbewertung interessierte sich kaum jemand dafür. Es schien, als glaube niemand an das Unternehmen. Intel war bewertet, als würde es die nächsten zehn Jahre gerade so überleben. In dieser Phase verloren viele, mit denen ich gesprochen hatte, Geld – weil sie nach 10 % Kursrückgang ausstiegen. Heute kostet eine Aktie der Intel Corporation 54 Dollar.</p>
+
+  <p>Viele haben mir kürzlich gesagt, sie hätten auf mich hören und damals kaufen sollen. Ich lächle dann – und weiß innerlich: Nein, hätten sie nicht. Statt keinen Gewinn zu machen, hätten sie mit hoher Wahrscheinlichkeit Verlust erlitten.</p>
+
+  <p>Ich werde nie wieder konkrete Investmentempfehlungen teilen. Kauft einfach den S&amp;P 500.</p>
+
+  <p>Michael Burry sprach kürzlich über die Vorteile, ein „Black-Box-Investor“ zu sein – jemand, der seine Positionen nicht offenlegen muss. Er schrieb: „Niemand will eine Dissertation zu jeder einzelnen Position.“ Das trifft einen Nerv. Ich habe genug innere Konflikte und Selbstzweifel bei jeder Investition. Genug Angst, genug Schmerz. Ich brauche keine zusätzliche Kritik von außen – oder schlimmer noch, den inneren Drang, meine These rechtfertigen zu müssen gegenüber jemandem, der sie vielleicht gar nicht sehen kann.</p>
+
+  <p>In vielerlei Hinsicht ist Diversifikation der Feind von Outperformance. Fondsmanager diversifizieren, weil sie sich absichern müssen. Es ist leichter, ein langweiliges, breit gestreutes Portfolio zu rechtfertigen, das den Markt abbildet, als ein konzentriertes, das es nicht tut. Die meisten verdienen ihr Geld ohnehin mit der 2-%-Managementgebühr, nicht mit den 20 % Performancebeteiligung. Wenn ich nur Marktrendite wollte, würde ich einfach den S&amp;P 500 kaufen – der nach Gebühren 90 % der Fonds schlägt. Wenn man sich Investor nennt, muss man seiner Überzeugung folgen. Auch wenn das Konzentration bedeutet. Man erinnere sich an Steve Ballmer.</p>
+
+  <p>„Wenn du nicht mehr in eine Lücke hineinstichst, die existiert, bist du nicht länger ein Rennfahrer.“ – Ayrton Senna.</p>
+
+  <p>2025 ist außerdem das letzte Jahr, in dem ich mit Leverage experimentiere. Emotional ist die Belastung höher, als man denkt. Das Urteilsvermögen wird getrübt, schwierige Entscheidungen werden zehnmal schwieriger. Performance-technisch war ich nach meiner Einschätzung schlechter oder bestenfalls gleich gut wie ohne. Also warum überhaupt?</p>
+
+  <p>Rückblickend kann ich nur dankbar sein für diese Möglichkeit. Vor sechs Jahren habe ich begonnen, aktiv zu investieren. Es war enorm schwierig – und irgendwie hat Gott es zugelassen, dass ich diesen Weg weitergehen darf. Ich weiß nicht, wie lange das noch so weitergeht. Es war schmerzhaft, aber auch erfüllend. Leiden gehört zum Leben, und ich weiß: Der einzige Weg führt hindurch.</p>
+
+  <p>Alles, was ich tun kann, ist ehrlich über diese Reise zu sprechen. Deshalb messe ich meine Performance am S&amp;P 500. Wenn ich den Markt nicht schlagen kann, warum sollte ich tun, was ich tue? Ich versuche, aus meinen Fehlern zu lernen und jeden Tag ein kleines bisschen besser zu werden.</p>
+
+  <p>Ich bin ein Verwalter. Und ich hoffe und bete, ein guter zu sein. Bewertung ist letztlich eine Suche nach Wahrheit. Ist etwas wirklich so viel wert, wie alle sagen? Das gilt nicht nur fürs Investieren – und ich versuche, danach zu leben.</p>
+
+  <p>Ich bleibe long auf die Menschheit.</p>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+
+    if(hamburger && mainNav) {
+      hamburger.addEventListener('click', () => {
+        mainNav.classList.toggle('show');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -58,8 +58,18 @@
       user-select: none;
     }
 
-    /* === LANDING LINKS === */
-    .landing {
+    /* === LANDING === */
+    .landing-brand {
+      position: absolute;
+      top: 25vh;
+      transform: translateX(-50%) translateY(-50%);
+      left: 50%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .landing-links {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -68,7 +78,21 @@
       gap: 52px;
     }
 
-    .landing a {
+    .landing-brand img {
+      width: 48px;
+      height: 48px;
+      display: block;
+    }
+
+    .landing-brand span {
+      font-size: 48px;
+      font-weight: normal;
+      color: #999999;
+      user-select: none;
+      cursor: default;
+    }
+
+    .landing-links a {
       font-size: 42px;
       font-weight: normal;
       color: #999999;
@@ -76,30 +100,47 @@
       transition: color 0.3s ease;
     }
 
-    .landing a:hover {
+    .landing-links a:hover {
       color: rgba(153, 153, 153, 0);
     }
 
     @media (hover: none) {
-      .landing a:hover,
-      .landing a:active,
-      .landing a:focus {
+      .landing-links a:hover,
+      .landing-links a:active,
+      .landing-links a:focus {
         color: #999999;
       }
     }
 
     @media (max-width: 600px) {
-      .site-header-inner {
-        justify-content: center;
-        padding: 16px 14px 24px 14px;
+      .landing-brand img {
+        width: 22px;
+        height: 22px;
+      }
+
+      .landing-brand span {
+        font-size: 24px;
+      }
+
+      .landing-links {
+        gap: 24px;
+      }
+
+      .landing-links a {
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
 
-<main class="landing">
-  <a href="ffi.html">fund i</a>
+<div class="landing-brand">
+  <img src="favicon.png" alt="">
+  <span>fieldsmock</span>
+</div>
+
+<main class="landing-links">
+  <a href="ffi.html">ffi</a>
   <a href="letters.html">letters</a>
   <a href="about.html">about</a>
 </main>

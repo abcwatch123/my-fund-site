@@ -3,8 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <title>fieldsmock</title>
-  <meta http-equiv="refresh" content="0; URL='ffi.html'">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Baskerville, serif;
+      margin: 0;
+      background: #fff;
+      color: #000;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      z-index: 100;
+      box-sizing: border-box;
+      padding-bottom: 8px;
+    }
+
+    .site-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 0;
+      box-sizing: border-box;
+    }
+
+    .logo-with-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #999999;
+    }
+
+    .logo-icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .site-name {
+      font-size: 24px;
+      font-weight: normal;
+      color: #999999;
+      user-select: none;
+    }
+
+    /* === LANDING LINKS === */
+    .landing {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 52px;
+    }
+
+    .landing a {
+      font-size: 42px;
+      font-weight: normal;
+      color: #999999;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .landing a:hover {
+      color: rgba(153, 153, 153, 0);
+    }
+
+    @media (hover: none) {
+      .landing a:hover,
+      .landing a:active,
+      .landing a:focus {
+        color: #999999;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-header-inner {
+        justify-content: center;
+        padding: 16px 14px 24px 14px;
+      }
+    }
+  </style>
 </head>
 <body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="logo-with-text">
+      <img src="favicon.png" alt="" class="logo-icon">
+      <span class="site-name">fieldsmock</span>
+    </a>
+  </div>
+</header>
+
+<main class="landing">
+  <a href="ffi.html">fund i</a>
+  <a href="letters.html">letters</a>
+  <a href="about.html">about</a>
+</main>
+
 </body>
 </html>

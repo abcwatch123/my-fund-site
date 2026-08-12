@@ -235,7 +235,15 @@
   </p>
 
   <div class="about-image">
-    <img src="assets/mud.png" alt="In the mud">
+    <img
+      src="assets/mud-800.jpg"
+      srcset="assets/mud-800.jpg 800w, assets/mud-1600.jpg 1600w"
+      sizes="(max-width: 840px) calc(100vw - 32px), 800px"
+      width="800"
+      height="600"
+      alt="In the mud"
+      decoding="async"
+      fetchpriority="high">
   </div>
 
   <div class="about-body">

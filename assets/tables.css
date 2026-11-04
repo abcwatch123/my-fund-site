@@ -1,0 +1,46 @@
+/* Shared table rules: fixed columns, left-aligned labels, right-aligned
+   numeric headings and values. Monetary values and rates use two decimals
+   in the HTML; year labels remain whole years. */
+.perf-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 16px 0 28px;
+  font-size: 0.9em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.perf-table th,
+.perf-table td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 6px 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.perf-table th {
+  color: #000;
+  font-weight: normal;
+  border-bottom-color: #000;
+}
+.perf-table td { color: #999999; }
+.perf-table .numeric {
+  text-align: right;
+  white-space: nowrap;
+}
+.performance-table col:first-child { width: 50%; }
+.performance-table col:nth-child(2),
+.performance-table col:nth-child(3) { width: 25%; }
+.ledger-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.ledger-table {
+  min-width: 560px;
+  margin-bottom: 12px;
+}
+.ledger-table th,
+.ledger-table td { white-space: nowrap; }
+.ledger-table col:nth-child(1) { width: 18%; }
+.ledger-table col:nth-child(2) { width: 26%; }
+.ledger-table col:nth-child(3),
+.ledger-table col:nth-child(4) { width: 21%; }
+.ledger-table col:nth-child(5) { width: 14%; }

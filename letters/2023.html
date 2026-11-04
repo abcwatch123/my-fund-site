@@ -214,30 +214,6 @@
       margin: 0;
     }
 
-    .perf-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0 28px 0;
-      font-size: 0.9em;
-    }
-
-    .perf-table th,
-    .perf-table td {
-      text-align: left;
-      padding: 6px 10px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .perf-table th {
-      color: #000;
-      font-weight: normal;
-      border-bottom-color: #000;
-    }
-
-    .perf-table td {
-      color: #999999;
-    }
-
     .perf-title {
       font-size: 1em;
       color: #000;
@@ -248,22 +224,6 @@
 
     section[aria-labelledby="investment-ledger"] {
       margin-top: 2.7em;
-    }
-
-    .ledger-scroll {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .ledger-table {
-      min-width: 560px;
-      table-layout: fixed;
-      margin-bottom: 12px;
-    }
-
-    .ledger-table th,
-    .ledger-table td {
-      white-space: nowrap;
     }
 
     .ledger-note {
@@ -334,6 +294,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/tables.css">
 </head>
 
 <body>
@@ -366,24 +327,25 @@
   </div>
 
   <h2 class="perf-title">Performance vs. S&amp;P 500</h2>
-  <table class="perf-table">
+  <table class="perf-table performance-table">
+        <colgroup><col><col><col></colgroup>
     <thead>
       <tr>
-        <th>Year</th>
-        <th>FFI</th>
-        <th>S&amp;P 500</th>
+        <th scope="col">Year</th>
+        <th scope="col" class="numeric">FFI</th>
+        <th scope="col" class="numeric">S&amp;P 500</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>2023</td>
-        <td>-20.27%</td>
-        <td>11.99%</td>
+        <td class="numeric">-20.27%</td>
+        <td class="numeric">11.99%</td>
       </tr>
       <tr>
         <td>Since inception</td>
-        <td>-20.27%</td>
-        <td>11.99%</td>
+        <td class="numeric">-20.27%</td>
+        <td class="numeric">11.99%</td>
       </tr>
     </tbody>
   </table>
@@ -410,28 +372,22 @@
     <h2 class="perf-title" id="investment-ledger">Investment ledger</h2>
     <div class="ledger-scroll" role="region" aria-label="2023 investment ledger" tabindex="0">
       <table class="perf-table ledger-table" aria-describedby="ledger-note" aria-labelledby="investment-ledger">
-        <colgroup>
-          <col style="width: 18%">
-          <col style="width: 26%">
-          <col style="width: 21%">
-          <col style="width: 21%">
-          <col style="width: 14%">
-        </colgroup>
+        <colgroup><col><col><col><col><col></colgroup>
         <thead>
           <tr>
             <th scope="col">Holding</th>
-            <th scope="col">Purchase Price</th>
-            <th scope="col">Exit Price</th>
-            <th scope="col">Price Change</th>
+            <th scope="col" class="numeric">Purchase Price</th>
+            <th scope="col" class="numeric">Exit Price</th>
+            <th scope="col" class="numeric">Price Change</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>9988.HK</td>
-            <td>HK$84.00</td>
-            <td>HK$75.60</td>
-            <td>−10.00%</td>
+            <td class="numeric">HK$84.00</td>
+            <td class="numeric">HK$75.60</td>
+            <td class="numeric">−10.00%</td>
             <td>Held</td>
           </tr>
         </tbody>

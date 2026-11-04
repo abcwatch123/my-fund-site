@@ -214,30 +214,6 @@
       margin-top: 1em;
     }
 
-    .perf-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0 28px 0;
-      font-size: 0.9em;
-    }
-
-    .perf-table th,
-    .perf-table td {
-      text-align: left;
-      padding: 6px 10px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .perf-table th {
-      color: #000;
-      font-weight: normal;
-      border-bottom-color: #000;
-    }
-
-    .perf-table td {
-      color: #999999;
-    }
-
     .perf-title {
       font-size: 1em;
       color: #000;
@@ -248,22 +224,6 @@
 
     section[aria-labelledby="investment-ledger"] {
       margin-top: 2.7em;
-    }
-
-    .ledger-scroll {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .ledger-table {
-      min-width: 560px;
-      table-layout: fixed;
-      margin-bottom: 12px;
-    }
-
-    .ledger-table th,
-    .ledger-table td {
-      white-space: nowrap;
     }
 
     .ledger-note {
@@ -334,6 +294,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/tables.css">
 </head>
 
 <body>
@@ -370,24 +331,25 @@
   </div>
 
   <h2 class="perf-title">Performance vs. S&amp;P 500</h2>
-  <table class="perf-table">
+  <table class="perf-table performance-table">
+        <colgroup><col><col><col></colgroup>
     <thead>
       <tr>
-        <th>Year</th>
-        <th>FFI</th>
-        <th>S&amp;P 500</th>
+        <th scope="col">Year</th>
+        <th scope="col" class="numeric">FFI</th>
+        <th scope="col" class="numeric">S&amp;P 500</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>2025</td>
-        <td>49.08%</td>
-        <td>16.39%</td>
+        <td class="numeric">49.08%</td>
+        <td class="numeric">16.39%</td>
       </tr>
       <tr>
         <td>Seit Auflegung</td>
-        <td>85.12%</td>
-        <td>60.72%</td>
+        <td class="numeric">85.12%</td>
+        <td class="numeric">60.72%</td>
       </tr>
     </tbody>
   </table>
@@ -442,63 +404,57 @@
     <h2 class="perf-title" id="investment-ledger">Anlageübersicht</h2>
     <div class="ledger-scroll" role="region" aria-label="Anlageübersicht 2025" tabindex="0">
       <table class="perf-table ledger-table" aria-describedby="ledger-note" aria-labelledby="investment-ledger">
-        <colgroup>
-          <col style="width: 18%">
-          <col style="width: 26%">
-          <col style="width: 21%">
-          <col style="width: 21%">
-          <col style="width: 14%">
-        </colgroup>
+        <colgroup><col><col><col><col><col></colgroup>
         <thead>
           <tr>
             <th scope="col">Position</th>
-            <th scope="col">Kaufkurs</th>
-            <th scope="col">Verkaufskurs</th>
-            <th scope="col">Kursänderung</th>
+            <th scope="col" class="numeric">Kaufkurs</th>
+            <th scope="col" class="numeric">Verkaufskurs</th>
+            <th scope="col" class="numeric">Kursänderung</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>RDDT</td>
-            <td>$107.62</td>
-            <td>$95.64</td>
-            <td>−11.13%</td>
+            <td class="numeric">$107.62</td>
+            <td class="numeric">$95.64</td>
+            <td class="numeric">−11.13%</td>
             <td>Verkauft</td>
           </tr>
           <tr>
             <td>TSM</td>
-            <td>$244.89</td>
-            <td>$287.58</td>
-            <td>+17.43%</td>
+            <td class="numeric">$244.89</td>
+            <td class="numeric">$287.58</td>
+            <td class="numeric">+17.43%</td>
             <td>Verkauft</td>
           </tr>
           <tr>
             <td>GOOG</td>
-            <td>$203.68</td>
-            <td>$302.21</td>
-            <td>+48.38%</td>
+            <td class="numeric">$203.68</td>
+            <td class="numeric">$302.21</td>
+            <td class="numeric">+48.38%</td>
             <td>Verkauft</td>
           </tr>
           <tr>
             <td>INTC</td>
-            <td>$22.40</td>
-            <td>$36.90</td>
-            <td>+64.77%</td>
+            <td class="numeric">$22.40</td>
+            <td class="numeric">$36.90</td>
+            <td class="numeric">+64.77%</td>
             <td>Gehalten</td>
           </tr>
           <tr>
             <td>AMZN</td>
-            <td>$248.26</td>
-            <td>$230.82</td>
-            <td>−7.02%</td>
+            <td class="numeric">$248.26</td>
+            <td class="numeric">$230.82</td>
+            <td class="numeric">−7.02%</td>
             <td>Gehalten</td>
           </tr>
           <tr>
             <td>META</td>
-            <td>$636.10</td>
-            <td>$660.09</td>
-            <td>+3.77%</td>
+            <td class="numeric">$636.10</td>
+            <td class="numeric">$660.09</td>
+            <td class="numeric">+3.77%</td>
             <td>Gehalten</td>
           </tr>
         </tbody>

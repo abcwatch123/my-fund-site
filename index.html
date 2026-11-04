@@ -186,30 +186,6 @@
       font-weight: normal;
     }
 
-    .perf-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0 28px 0;
-      font-size: 0.9em;
-    }
-
-    .perf-table th,
-    .perf-table td {
-      text-align: left;
-      padding: 6px 10px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .perf-table th {
-      color: #000;
-      font-weight: normal;
-      border-bottom-color: #000;
-    }
-
-    .perf-table td {
-      color: #999999;
-    }
-
     .perf-title {
       font-size: 1em;
       color: #000;
@@ -314,6 +290,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/tables.css">
 </head>
 
 <body>
@@ -352,24 +329,25 @@
 
   <section aria-labelledby="performance-summary">
     <h2 class="perf-title" id="performance-summary">Performance vs. S&amp;P 500</h2>
-    <table class="perf-table">
+    <table class="perf-table performance-table">
+        <colgroup><col><col><col></colgroup>
       <thead>
         <tr>
           <th scope="col">Since inception (2023)</th>
-          <th scope="col">FFI</th>
-          <th scope="col">S&amp;P 500</th>
+          <th scope="col" class="numeric">FFI</th>
+          <th scope="col" class="numeric">S&amp;P 500</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Growth of $1 invested</td>
-          <td>$1.85</td>
-          <td>$1.61</td>
+          <td class="numeric">$1.85</td>
+          <td class="numeric">$1.61</td>
         </tr>
         <tr>
           <td>Annualised return</td>
-          <td>22.79%</td>
-          <td>17.14%</td>
+          <td class="numeric">22.79%</td>
+          <td class="numeric">17.14%</td>
         </tr>
       </tbody>
     </table>

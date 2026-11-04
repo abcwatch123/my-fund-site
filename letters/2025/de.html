@@ -272,6 +272,9 @@
       font-size: 0.9em;
     }
 
+    .ledger-note p { margin: 0 0 1em; }
+    .ledger-note p:last-child { margin-bottom: 0; }
+
     .page .ledger-note a {
       color: inherit;
       text-decoration: underline;
@@ -451,7 +454,7 @@
             <th scope="col">Position</th>
             <th scope="col">Kaufkurs</th>
             <th scope="col">Verkaufskurs</th>
-            <th scope="col">Kursrendite</th>
+            <th scope="col">Kursänderung</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
@@ -465,9 +468,9 @@
           </tr>
           <tr>
             <td>TSM</td>
-            <td>$243.05</td>
+            <td>$244.89</td>
             <td>$287.58</td>
-            <td>+18.32%</td>
+            <td>+17.43%</td>
             <td>Verkauft</td>
           </tr>
           <tr>
@@ -479,9 +482,9 @@
           </tr>
           <tr>
             <td>INTC</td>
-            <td>$25.75</td>
+            <td>$22.40</td>
             <td>$36.90</td>
-            <td>+43.28%</td>
+            <td>+64.77%</td>
             <td>Gehalten</td>
           </tr>
           <tr>
@@ -501,7 +504,10 @@
         </tbody>
       </table>
     </div>
-    <p class="ledger-note" id="ledger-note">Die Kaufkurse sind nach Stückzahl gewichtete Durchschnittskurse vor Gebühren. Die Verkaufskurse zeigen den Kurs des letzten Verkaufs oder bei noch gehaltenen Positionen den Jahresendkurs. Die Kursrenditen können sich auf mehrere Jahre beziehen, berücksichtigen keine Hebelwirkung und entsprechen weder der jährlichen Portfoliorendite noch dem kumulierten Handelsergebnis. Alle Kurse sind in US-Dollar angegeben, sofern nicht anders gekennzeichnet.</p>
+    <div class="ledger-note" id="ledger-note">
+      <p>Die Kaufkurse entsprechen dem erstmaligen Erwerb jeder Position vor Gebühren. Bei mehreren Teilausführungen werden die Kurse nach Stückzahl gewichtet. Verkäufe und Rückkäufe innerhalb desselben Kalenderjahres werden als eine Position behandelt. Zum Jahresende gehaltene Positionen behalten ihren ursprünglichen Kaufkurs in den Folgejahren bei. Ist eine Position zum Jahresende vollständig verkauft, legt der nächste Kauf einen neuen Einstiegskurs fest.</p>
+      <p>Die Verkaufskurse entsprechen dem letzten Verkaufskurs oder bei noch gehaltenen Positionen dem Jahresendkurs. Kursänderungen veranschaulichen den Verlauf der Position und können sich über mehrere Jahre erstrecken. Sie berücksichtigen weder zwischenzeitliche Transaktionen noch Hebelwirkung, Positionsgrössen, Dividenden, Gebühren oder Währungseffekte und zeigen für sich allein keine Anlage- oder Portfoliorenditen. Alle Kurse sind in US-Dollar angegeben, sofern nicht anders gekennzeichnet.</p>
+    </div>
   </section>
 
   <footer class="disclaimer">

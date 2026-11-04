@@ -272,6 +272,9 @@
       font-size: 0.9em;
     }
 
+    .ledger-note p { margin: 0 0 1em; }
+    .ledger-note p:last-child { margin-bottom: 0; }
+
     .page .ledger-note a {
       color: inherit;
       text-decoration: underline;
@@ -441,16 +444,16 @@
             <th scope="col">Holding</th>
             <th scope="col">Purchase Price</th>
             <th scope="col">Exit Price</th>
-            <th scope="col">Price Return</th>
+            <th scope="col">Price Change</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>9988.HK</td>
-            <td>HK$84.24</td>
+            <td>HK$84.00</td>
             <td>HK$69.65</td>
-            <td>−17.32%</td>
+            <td>−17.08%</td>
             <td>Exited</td>
           </tr>
           <tr>
@@ -469,9 +472,9 @@
           </tr>
           <tr>
             <td>META</td>
-            <td>$465.78</td>
+            <td>$456.99</td>
             <td>$570.00</td>
-            <td>+22.38%</td>
+            <td>+24.73%</td>
             <td>Exited</td>
           </tr>
           <tr>
@@ -484,7 +487,10 @@
         </tbody>
       </table>
     </div>
-    <p class="ledger-note" id="ledger-note">Purchase prices are quantity-weighted averages before fees. Exit prices use the final sale price or, for positions still held, the year-end quote. Price returns may span multiple years, exclude leverage, and do not represent annual portfolio performance or accumulated trading profit. Prices are in US dollars unless marked otherwise.</p>
+    <div class="ledger-note" id="ledger-note">
+      <p>Purchase prices reflect the initial acquisition of each position, before fees, with multiple fills quantity-weighted. Sales and repurchases within the same calendar year are treated as one position. Positions held at year-end retain their original purchase price in subsequent years. Following a fully exited year-end position, the next purchase establishes a new entry price.</p>
+      <p>Exit prices reflect the last sale or, for positions still held, the year-end quote. Price changes illustrate the holding's journey and may span multiple years. They do not account for intervening trades, leverage, position sizes, dividends, fees or currency effects, and do not alone show investment or portfolio returns. Prices are in US dollars unless marked otherwise.</p>
+    </div>
   </section>
 
   <footer class="disclaimer">

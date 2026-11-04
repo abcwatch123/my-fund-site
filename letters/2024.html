@@ -30,8 +30,8 @@
   <meta name="twitter:image" content="https://fieldsmock.com/assets/social-card.jpg">
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/content-protection.css">
-  <script src="../assets/content-protection.js" defer></script>
+  <link rel="stylesheet" href="../assets/content-protection.css?v=2">
+  <script src="../assets/content-protection.js?v=2" defer></script>
 
   <style>
     body {
@@ -87,7 +87,6 @@
       font-size: 24px;
       font-weight: normal;
       color: #999999;
-      user-select: none;
     }
 
     /* MENU */
@@ -164,7 +163,6 @@
       letter-spacing: 0.4px;
       color: #b3b3b3;
       text-transform: uppercase;
-      user-select: none;
     }
 
     .lang-toggle a {
@@ -247,6 +245,34 @@
       text-transform: none;
     }
 
+    .ledger-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ledger-table {
+      min-width: 560px;
+      table-layout: fixed;
+      margin-bottom: 12px;
+    }
+
+    .ledger-table th,
+    .ledger-table td {
+      white-space: nowrap;
+    }
+
+    .ledger-note {
+      margin: 0 0 28px;
+      color: #999999;
+      font-size: 0.9em;
+    }
+
+    .page .ledger-note a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     /* Mobile adjustments */
     @media (max-width: 600px) {
       .site-header-inner {
@@ -320,7 +346,6 @@
 
     <nav class="main-nav" id="mainNav">
       <a href="/letters">letters</a>
-      <a href="/holdings">holdings</a>
       <a href="/about">about</a>
     </nav>
   </div>
@@ -348,6 +373,68 @@
       </tr>
     </tbody>
   </table>
+
+  <section aria-labelledby="investment-ledger">
+    <h2 class="perf-title" id="investment-ledger">Investment Ledger</h2>
+    <div class="ledger-scroll" role="region" aria-label="2024 investment ledger" tabindex="0">
+      <table class="perf-table ledger-table" aria-describedby="ledger-note" aria-labelledby="investment-ledger">
+        <colgroup>
+          <col style="width: 18%">
+          <col style="width: 26%">
+          <col style="width: 21%">
+          <col style="width: 21%">
+          <col style="width: 14%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Holding</th>
+            <th scope="col">Purchase Price</th>
+            <th scope="col">Exit Price</th>
+            <th scope="col">Price Return</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>9988.HK</td>
+            <td>HK$84.24</td>
+            <td>HK$69.65</td>
+            <td>−17.32%</td>
+            <td>Exited</td>
+          </tr>
+          <tr>
+            <td>ABNB</td>
+            <td>$149.37</td>
+            <td>$152.40</td>
+            <td>+2.03%</td>
+            <td>Exited</td>
+          </tr>
+          <tr>
+            <td>GOOG</td>
+            <td>$138.59</td>
+            <td>$169.22</td>
+            <td>+22.10%</td>
+            <td>Exited</td>
+          </tr>
+          <tr>
+            <td>META</td>
+            <td>$465.78</td>
+            <td>$570.00</td>
+            <td>+22.38%</td>
+            <td>Exited</td>
+          </tr>
+          <tr>
+            <td>INTC</td>
+            <td>$22.40</td>
+            <td>$20.05</td>
+            <td>−10.47%</td>
+            <td>Held</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ledger-note" id="ledger-note">Purchase prices are quantity-weighted averages before fees. Exit prices use the final sale price or, for positions still held, the year-end quote. Price returns may span multiple years and do not represent annual portfolio performance or accumulated trading profit. Prices are in US dollars unless marked otherwise.</p>
+  </section>
 
   <p>The value investors add to the world is making sure that the right people get the adequate support they need.</p>
 

@@ -30,8 +30,8 @@
   <meta name="twitter:image" content="https://fieldsmock.com/assets/social-card.jpg">
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/content-protection.css">
-  <script src="../assets/content-protection.js" defer></script>
+  <link rel="stylesheet" href="../assets/content-protection.css?v=2">
+  <script src="../assets/content-protection.js?v=2" defer></script>
 
   <style>
     body {
@@ -87,7 +87,6 @@
       font-size: 24px;
       font-weight: normal;
       color: #999999;
-      user-select: none;
     }
 
     /* MENU */
@@ -164,7 +163,6 @@
       letter-spacing: 0.4px;
       color: #b3b3b3;
       text-transform: uppercase;
-      user-select: none;
     }
 
     .page .lang-toggle a {
@@ -242,6 +240,34 @@
       text-transform: none;
     }
 
+    .ledger-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ledger-table {
+      min-width: 560px;
+      table-layout: fixed;
+      margin-bottom: 12px;
+    }
+
+    .ledger-table th,
+    .ledger-table td {
+      white-space: nowrap;
+    }
+
+    .ledger-note {
+      margin: 0 0 28px;
+      color: #999999;
+      font-size: 0.9em;
+    }
+
+    .page .ledger-note a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     /* Mobile adjustments */
     @media (max-width: 600px) {
       .site-header-inner {
@@ -315,7 +341,6 @@
 
     <nav class="main-nav" id="mainNav">
       <a href="/letters">letters</a>
-      <a href="/holdings">holdings</a>
       <a href="/about">about</a>
     </nav>
   </div>
@@ -347,6 +372,75 @@
       </tr>
     </tbody>
   </table>
+
+  <section aria-labelledby="investment-ledger">
+    <h2 class="perf-title" id="investment-ledger">Investment Ledger</h2>
+    <div class="ledger-scroll" role="region" aria-label="2025 investment ledger" tabindex="0">
+      <table class="perf-table ledger-table" aria-describedby="ledger-note" aria-labelledby="investment-ledger">
+        <colgroup>
+          <col style="width: 18%">
+          <col style="width: 26%">
+          <col style="width: 21%">
+          <col style="width: 21%">
+          <col style="width: 14%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Holding</th>
+            <th scope="col">Purchase Price</th>
+            <th scope="col">Exit Price</th>
+            <th scope="col">Price Return</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RDDT</td>
+            <td>$107.62</td>
+            <td>$95.64</td>
+            <td>−11.13%</td>
+            <td>Exited</td>
+          </tr>
+          <tr>
+            <td>TSM</td>
+            <td>$243.05</td>
+            <td>$287.58</td>
+            <td>+18.32%</td>
+            <td>Exited</td>
+          </tr>
+          <tr>
+            <td>GOOG</td>
+            <td>$203.68</td>
+            <td>$302.21</td>
+            <td>+48.38%</td>
+            <td>Exited</td>
+          </tr>
+          <tr>
+            <td>INTC</td>
+            <td>$25.75</td>
+            <td>$36.90</td>
+            <td>+43.28%</td>
+            <td>Held</td>
+          </tr>
+          <tr>
+            <td>AMZN</td>
+            <td>$248.26</td>
+            <td>$230.82</td>
+            <td>−7.02%</td>
+            <td>Held</td>
+          </tr>
+          <tr>
+            <td>META</td>
+            <td>$636.10</td>
+            <td>$660.09</td>
+            <td>+3.77%</td>
+            <td>Held</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ledger-note" id="ledger-note">Purchase prices are quantity-weighted averages before fees. Exit prices use the final sale price or, for positions still held, the year-end quote. Price returns may span multiple years and do not represent annual portfolio performance or accumulated trading profit. Prices are in US dollars unless marked otherwise.</p>
+  </section>
 
   <p>The good results we achieved last year mask how difficult the year actually was. It was a riptide of self-doubt, pain, pressure, and fear. I made more mistakes than I would have liked and learned many important lessons.</p>
 

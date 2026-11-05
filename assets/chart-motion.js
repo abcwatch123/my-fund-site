@@ -3,7 +3,39 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const ns = 'http://www.w3.org/2000/svg';
   const charts = [];
-  let observer;
+  let visibilityFrame = 0;
+
+  function stopWatching() {
+    window.removeEventListener('scroll', scheduleVisibility);
+    window.removeEventListener('resize', scheduleVisibility);
+    window.removeEventListener('load', scheduleVisibility);
+    window.visualViewport?.removeEventListener('resize', scheduleVisibility);
+    window.visualViewport?.removeEventListener('scroll', scheduleVisibility);
+    if (visibilityFrame) cancelAnimationFrame(visibilityFrame);
+    visibilityFrame = 0;
+  }
+
+  function checkVisibility() {
+    visibilityFrame = 0;
+    const viewport = window.visualViewport;
+    const top = Math.max(viewport?.offsetTop || 0,
+      document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0);
+    const bottom = (viewport?.offsetTop || 0) + (viewport?.height || window.innerHeight);
+    charts.forEach(chart => {
+      if (chart.svg.dataset.motionState !== 'pending') return;
+      const bounds = chart.svg.getBoundingClientRect();
+      const visibleHeight = Math.max(0, Math.min(bounds.bottom, bottom) - Math.max(bounds.top, top));
+      // Mobile deliberately crops the SVG's horizontal margins. Require its full
+      // height, including the legend; for short screens use the available height.
+      const requiredHeight = Math.min(bounds.height, bottom - top);
+      if (requiredHeight > 0 && visibleHeight >= requiredHeight - 1) reveal(chart);
+    });
+    if (charts.every(chart => chart.svg.dataset.motionState !== 'pending')) stopWatching();
+  }
+
+  function scheduleVisibility() {
+    if (!visibilityFrame) visibilityFrame = requestAnimationFrame(checkVisibility);
+  }
 
   function complete(chart) {
     if (chart.frame) cancelAnimationFrame(chart.frame);
@@ -69,7 +101,7 @@
     });
     const chart = { svg, reveal: rect, labels, startX, endX, width, frame: 0 };
     charts.push(chart);
-    if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+    if (reducedMotion.matches) {
       complete(chart);
       return;
     }
@@ -78,27 +110,21 @@
     svg.dataset.motionState = 'pending';
   });
 
-  if (!reducedMotion.matches && 'IntersectionObserver' in window) {
-    // The SVG bounds include the legend. Exclude the fixed header from the visible area.
-    const headerHeight = Math.ceil(document.querySelector('.site-header')?.getBoundingClientRect().height || 0);
-    observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting || entry.intersectionRatio < 1) return;
-        const chart = charts.find(item => item.svg === entry.target);
-        if (chart?.svg.dataset.motionState === 'pending') reveal(chart);
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 1, rootMargin: `-${headerHeight}px 0px 0px 0px` });
-    charts.filter(chart => chart.svg.dataset.motionState === 'pending')
-      .forEach(chart => observer.observe(chart.svg));
+  if (!reducedMotion.matches) {
+    window.addEventListener('scroll', scheduleVisibility, { passive: true });
+    window.addEventListener('resize', scheduleVisibility);
+    window.addEventListener('load', scheduleVisibility);
+    window.visualViewport?.addEventListener('resize', scheduleVisibility);
+    window.visualViewport?.addEventListener('scroll', scheduleVisibility, { passive: true });
+    scheduleVisibility();
   }
   reducedMotion.addEventListener('change', event => {
     if (!event.matches) return;
-    observer?.disconnect();
+    stopWatching();
     charts.forEach(complete);
   });
   window.addEventListener('beforeprint', () => {
-    observer?.disconnect();
+    stopWatching();
     charts.forEach(complete);
   });
 })();

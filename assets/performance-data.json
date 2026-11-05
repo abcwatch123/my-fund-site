@@ -1,0 +1,42 @@
+{
+  "currency": "USD",
+  "inception": "2023-10-05",
+  "as_of": "2025-12-31",
+  "benchmark": {
+    "symbol": "SPXTR",
+    "dividends": "reinvested"
+  },
+  "historical_basis": "Five historical USD valuations reconstructed using same-date rates derived from IBKR reports.",
+  "periods": [
+    {
+      "year": 2023,
+      "twr": -0.18101596613924076,
+      "cr": -0.18101596613924076,
+      "car": null,
+      "growth": 0.8189840338607592,
+      "benchmark_twr": 0.12318355131905911,
+      "benchmark_cr": 0.12318355131905911,
+      "benchmark_car": null
+    },
+    {
+      "year": 2024,
+      "twr": 0.5845356511191748,
+      "cr": 0.29770939934976637,
+      "car": 0.23364880901722396,
+      "growth": 1.2977093993497664,
+      "benchmark_twr": 0.2501967983580389,
+      "benchmark_cr": 0.40420047982749985,
+      "benchmark_car": 0.31458739956487736
+    },
+    {
+      "year": 2025,
+      "twr": 0.5220840674384088,
+      "cr": 0.9752228009153467,
+      "car": 0.35489904019119844,
+      "growth": 1.9752228009153467,
+      "benchmark_twr": 0.1787997354565729,
+      "benchmark_cr": 0.6552711541486496,
+      "benchmark_car": 0.2521652896672648
+    }
+  ]
+}

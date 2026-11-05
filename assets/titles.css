@@ -1,13 +1,32 @@
-/* Shared page titles: consistent typography and spacing on every page. */
+/* Shared page titles and opening-content spacing on every page. */
+.page {
+  --page-title-gap: 18px;
+}
+
 .page h1 {
   font-size: 2em;
   font-weight: normal;
   color: #999999;
   line-height: 1;
-  margin: 0 0 18px;
+  margin: 0 0 var(--page-title-gap);
 }
 
 /* Letter headers own the gap below the title and language switch. */
+.letter-header {
+  margin-bottom: var(--page-title-gap);
+}
 .letter-header h1 {
   margin-bottom: 0;
+}
+
+/* Opening content must not introduce its own top margin. */
+.page > h1 + *,
+.page > .letter-header + * {
+  margin-top: 0;
+}
+
+/* Images have no text leading. Add the half-leading of the surrounding
+   text so image-led and text-led openings have the same visual gap. */
+.page-opening-media {
+  padding-top: calc((1lh - 1em) / 2);
 }

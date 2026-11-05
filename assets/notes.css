@@ -1,9 +1,13 @@
-/* Shared footnote and disclaimer spacing on every page and language. */
-:root { --note-line-height: 1.7; --note-paragraph-gap: 1em; }
-.ledger-note, .disclaimer, .chart-note, .performance-note {
-  line-height: var(--note-line-height);
-}
+/* Whole-pixel spacing keeps successive lines consistent across pages. */
+:root { --footnote-line-height: 28px; --disclaimer-line-height: 31px; }
+.ledger-note, .chart-note, .performance-note { line-height: var(--footnote-line-height); }
 .ledger-note { margin: 0 0 28px; color: #999999; font-size: 0.9em; }
-.disclaimer { border-top: 1px solid #000; margin-top: 40px; padding-top: 24px; }
+.disclaimer { border-top: 1px solid #000; margin-top: 40px; padding-top: 24px; line-height: var(--disclaimer-line-height); }
 .ledger-note p, .disclaimer p { margin: 0; line-height: inherit; }
-.ledger-note p + p, .disclaimer p + p { margin-top: var(--note-paragraph-gap); }
+.ledger-note p + p { margin-top: 16px; }
+.disclaimer p + p { margin-top: 18px; }
+@media (max-width: 600px) {
+  :root { --footnote-line-height: 24px; --disclaimer-line-height: 27px; }
+  .ledger-note p + p { margin-top: 14px; }
+  .disclaimer p + p { margin-top: 16px; }
+}

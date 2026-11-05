@@ -1,0 +1,13 @@
+/* Shared page titles: consistent typography and spacing on every page. */
+.page h1 {
+  font-size: 2em;
+  font-weight: normal;
+  color: #999999;
+  line-height: 1;
+  margin: 0 0 18px;
+}
+
+/* Letter headers own the gap below the title and language switch. */
+.letter-header h1 {
+  margin-bottom: 0;
+}

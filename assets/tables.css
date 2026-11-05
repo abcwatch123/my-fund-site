@@ -1,5 +1,5 @@
-/* Shared table rules: fixed columns, left-aligned labels, right-aligned
-   numeric headings and values. Monetary values and rates use two decimals
+/* Shared table rules: fixed columns, first-column labels aligned left,
+   all other headings and values aligned right. Monetary values and rates use two decimals
    in the HTML; year labels remain whole years. */
 .perf-table {
   width: 100%;
@@ -22,10 +22,9 @@
   border-bottom-color: #000;
 }
 .perf-table td { color: #999999; }
-.perf-table .numeric {
-  text-align: right;
-  white-space: nowrap;
-}
+.perf-table th:not(:first-child),
+.perf-table td:not(:first-child) { text-align: right; }
+.perf-table .numeric { white-space: nowrap; }
 .performance-table col:first-child { width: 50%; }
 .performance-table col:nth-child(2),
 .performance-table col:nth-child(3) { width: 25%; }
@@ -39,8 +38,9 @@
 }
 .ledger-table th,
 .ledger-table td { white-space: nowrap; }
-.ledger-table col:nth-child(1) { width: 18%; }
-.ledger-table col:nth-child(2) { width: 26%; }
-.ledger-table col:nth-child(3),
-.ledger-table col:nth-child(4) { width: 21%; }
-.ledger-table col:nth-child(5) { width: 14%; }
+.ledger-table th:last-child { white-space: normal; overflow-wrap: anywhere; }
+.ledger-table col:nth-child(1) { width: 14%; }
+.ledger-table col:nth-child(2) { width: 24%; }
+.ledger-table col:nth-child(3) { width: 20%; }
+.ledger-table col:nth-child(4) { width: 22%; }
+.ledger-table col:nth-child(5) { width: 20%; }

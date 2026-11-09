@@ -230,12 +230,12 @@
     }
 
     .archive-grid figure { margin: 0; }
+    .archive-photo-link { display: block; }
     .archive-grid img { width: 100%; height: auto; margin-bottom: 10px; }
     .archive-grid figcaption { color: #999; font-size: 0.9em; }
     .archive-caption-credit { display: block; }
     .archive-intro { margin: 28px 0 0; }
     .page .archive-intro a { text-decoration: underline; text-underline-offset: 3px; }
-    .page .archive-intro a:hover { color: #777; }
 
     @media (max-width: 600px) {
       .archive-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -274,24 +274,28 @@
 
   <div class="archive-grid page-opening-media">
     <figure>
+      <a class="archive-photo-link" href="https://www.instagram.com/p/Dfg1pA0hL2x/" target="_blank" rel="noopener noreferrer">
       <img src="assets/archive/dirty-frequencies-800.jpg"
         srcset="assets/archive/dirty-frequencies-800.jpg 800w, assets/archive/dirty-frequencies-1600.jpg 1600w"
         sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 840px) calc((100vw - 64px) / 2), 388px"
         width="800" height="1067" alt="Dirty frequencies by Dominic Khoo: a textured white painting on a pale wall."
         decoding="async" fetchpriority="high">
+      </a>
       <figcaption>dirty frequencies<span class="archive-caption-credit">by dominic khoo</span></figcaption>
     </figure>
     <figure>
+      <a class="archive-photo-link" href="https://www.instagram.com/p/DfCNpoTtJWa/" target="_blank" rel="noopener noreferrer">
       <img src="assets/archive/flieger-torch-800.jpg"
         srcset="assets/archive/flieger-torch-800.jpg 800w, assets/archive/flieger-torch-1600.jpg 1600w"
         sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 840px) calc((100vw - 64px) / 2), 388px"
         width="800" height="1067" alt="Flieger torch by Muyshondt: a metal torch photographed against a dark background."
         decoding="async">
+      </a>
       <figcaption>flieger torch<span class="archive-caption-credit">by muyshondt</span></figcaption>
     </figure>
   </div>
 
-  <p class="archive-intro">I sometimes post investment thoughts on instagram, alongside my crappy photos of actually wonderful everyday things.</p>
+  <p class="archive-intro">I sometimes post investment thoughts on <a href="https://www.instagram.com/fieldsmock/" target="_blank" rel="noopener noreferrer">instagram</a>, alongside my crappy photos of actually wonderful everyday things.</p>
 
   <footer class="disclaimer">
     <p>Disclaimer. This website is provided for general informational purposes only. Nothing on this website constitutes investment, financial, legal, or tax advice, or an offer to sell or a solicitation of an offer to buy any security or other financial instrument. Any views expressed are personal opinions and may change without notice. Past performance is not indicative of future results.</p>
